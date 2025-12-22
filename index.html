@@ -3,159 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Structura | Elite House Estimates</title>
+    <title>STRUCTURA | Smart Estimates</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; color: #0f172a; overflow-x: hidden; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; color: #0f172a; }
         
         #intro {
             position: fixed; inset: 0; z-index: 100;
             background-image: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), 
-                              url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80');
+                              url('https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=1200&q=80');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             transition: opacity 0.8s ease-out;
         }
 
-        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
-        .navy-gradient { background: linear-gradient(135deg, #0f172a 0%, #334155 100%); }
-        .active-card { border: 3px solid #3b82f6 !important; transform: scale(0.97); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2); }
-        .hidden { opacity: 0; pointer-events: none; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        
-        .btn-3d { transition: all 0.2s ease; transform: translateY(0); }
+        .glass { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .navy-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .active-card { border: 4px solid #3b82f6 !important; transform: scale(0.98); }
+        .hidden { display: none; }
+        .btn-3d { transition: all 0.2s ease; }
         .btn-3d:active { transform: translateY(4px); }
-        
-        .service-vertical-card {
-            display: flex; flex-direction: column; width: 100%;
-        }
     </style>
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen pb-20">
 
     <div id="intro">
         <img src="https://i.ibb.co/v4m8YmXm/1000021592.jpg" class="w-24 h-24 mb-6 rounded-2xl shadow-2xl border border-blue-400/50">
-        <h1 class="text-white text-5xl font-black tracking-tighter italic">STRUCTURA</h1>
-        <div class="h-1 w-12 bg-blue-500 mt-4 rounded-full"></div>
-        <p class="text-slate-400 font-medium tracking-[0.5em] mt-4 text-[10px] uppercase">Smart Estimation Lab</p>
+        <h1 class="text-white text-5xl font-black tracking-tighter italic uppercase">STRUCTURA</h1>
+        <p class="text-blue-400 font-bold tracking-[0.4em] mt-4 text-[10px] uppercase">Smart Estimation Lab</p>
     </div>
 
     <div class="max-w-md mx-auto">
-        <nav class="glass sticky top-0 z-50 px-6 py-5 flex items-center justify-between border-b border-slate-200/50">
+        <nav class="glass sticky top-0 z-50 px-6 py-5 flex items-center justify-between border-b border-slate-200">
             <div class="flex items-center">
-                <img src="https://i.ibb.co/v4m8YmXm/1000021592.jpg" class="w-8 h-8 rounded-lg mr-3 shadow-sm">
-                <span class="text-xl font-extrabold text-slate-900 tracking-tighter uppercase">STRUCTURA</span>
+                <img src="https://i.ibb.co/v4m8YmXm/1000021592.jpg" class="w-8 h-8 rounded-lg mr-3">
+                <span class="text-xl font-extrabold text-slate-900 tracking-tighter uppercase italic">STRUCTURA</span>
             </div>
-            <a href="tel:0000000000" class="bg-red-50 text-red-600 px-3 py-1 rounded-full text-[10px] font-black animate-pulse border border-red-200">
+            <a href="tel:07000000000" class="bg-red-600 text-white px-4 py-2 rounded-xl text-[10px] font-black shadow-lg animate-pulse">
                 URGENT CALL
             </a>
         </nav>
 
-        <div class="p-6 space-y-8">
-            <div>
-                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block">01 / Choose Specialty</label>
+        <div class="p-6 space-y-10">
+            
+            <section id="section-categories">
+                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 block border-l-4 border-blue-500 pl-3">01 / Choose Trade</label>
                 <div class="flex flex-col space-y-4" id="category-list">
                     </div>
-            </div>
+            </section>
 
-            <div id="calculator-ui" class="hidden space-y-6 animate-in slide-in-from-bottom-5 duration-700">
+            <section id="calculator-ui" class="hidden space-y-8 animate-in slide-in-from-bottom-5 duration-700">
                 
+                <hr class="border-slate-200">
+
                 <div>
-                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block">02 / Specification Level</label>
-                    <div class="flex bg-slate-200/50 p-1 rounded-2xl">
-                        <button onclick="setTier('Standard')" id="btn-standard" class="flex-1 py-3 rounded-xl font-bold transition-all bg-white shadow-sm text-slate-800">Standard</button>
-                        <button onclick="setTier('Premium')" id="btn-premium" class="flex-1 py-3 rounded-xl font-bold transition-all text-slate-500">Premium ✨</button>
+                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block italic">02 / Select Finish Grade</label>
+                    <div class="flex bg-slate-200/50 p-1.5 rounded-2xl">
+                        <button onclick="setTier('Standard')" id="btn-standard" class="flex-1 py-4 rounded-xl font-black transition-all bg-white shadow text-slate-800">STANDARD</button>
+                        <button onclick="setTier('Premium')" id="btn-premium" class="flex-1 py-4 rounded-xl font-black transition-all text-slate-500">PREMIUM ✨</button>
                     </div>
                 </div>
 
                 <div id="roofing-complexity" class="hidden">
-                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block">03 / Architecture Type</label>
+                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block italic">03 / Architecture</label>
                     <div class="grid grid-cols-3 gap-2">
-                        <button onclick="setProperty('Terrace')" id="btn-Terrace" class="py-3 rounded-xl font-bold text-[10px] glass btn-3d">Terrace</button>
-                        <button onclick="setProperty('Semi-Detached')" id="btn-Semi-Detached" class="py-3 rounded-xl font-bold text-[10px] glass btn-3d">Semi-Det</button>
-                        <button onclick="setProperty('Detached')" id="btn-Detached" class="py-3 rounded-xl font-bold text-[10px] glass btn-3d">Detached</button>
+                        <button onclick="setProperty('Terrace')" id="btn-Terrace" class="py-4 rounded-xl font-black text-[10px] glass btn-3d uppercase">Terrace</button>
+                        <button onclick="setProperty('Semi-Detached')" id="btn-Semi-Detached" class="py-4 rounded-xl font-black text-[10px] glass btn-3d uppercase">Semi-Det</button>
+                        <button onclick="setProperty('Detached')" id="btn-Detached" class="py-4 rounded-xl font-black text-[10px] glass btn-3d uppercase">Detached</button>
                     </div>
                 </div>
 
                 <div id="services-list" class="space-y-4"></div>
 
-                <div id="area-input-section" class="hidden glass p-7 rounded-[2.5rem] border border-slate-100 shadow-sm">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">Total Area Size</span>
-                        <div class="flex bg-slate-100 rounded-lg p-1 text-[10px] font-bold">
-                            <button onclick="setUnit('sqm')" id="unit-sqm" class="px-3 py-1 rounded bg-white">M²</button>
-                            <button onclick="setUnit('sqft')" id="unit-sqft" class="px-3 py-1 rounded">FT²</button>
+                <div id="area-input-section" class="hidden glass p-8 rounded-[2.5rem] shadow-xl border border-slate-200">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Measurement</span>
+                        <div class="flex bg-slate-100 rounded-xl p-1 text-[10px] font-black">
+                            <button onclick="setUnit('sqm')" id="unit-sqm" class="px-4 py-2 rounded-lg bg-white shadow-sm">M²</button>
+                            <button onclick="setUnit('sqft')" id="unit-sqft" class="px-4 py-2 rounded-lg">FT²</button>
                         </div>
                     </div>
-                    <input type="number" id="area-val" oninput="updatePrice()" placeholder="00" class="w-full text-6xl font-black bg-transparent outline-none text-blue-600">
+                    <input type="number" id="area-val" oninput="updatePrice()" placeholder="0" class="w-full text-7xl font-black bg-transparent outline-none text-blue-600">
                 </div>
 
-                <div id="price-box" class="hidden navy-gradient p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
-                    <p class="text-blue-400 text-[10px] font-black tracking-widest uppercase mb-1">Estimated Investment</p>
-                    <h2 id="display-price" class="text-5xl font-black text-white mb-6">£0</h2>
+                <div id="price-box" class="hidden navy-gradient p-10 rounded-[3rem] shadow-2xl">
+                    <p class="text-blue-400 text-[10px] font-black tracking-widest uppercase mb-2">Estimated Value</p>
+                    <h2 id="display-price" class="text-6xl font-black text-white mb-10">£0</h2>
                     
-                    <div class="space-y-3">
-                        <button onclick="sendEmail()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-5 rounded-2xl shadow-lg transition-all btn-3d text-lg">
+                    <div class="space-y-4">
+                        <button onclick="sendEmail()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-6 rounded-2xl shadow-xl transition-all btn-3d text-xl uppercase tracking-tighter">
                             Request Formal Survey
                         </button>
-                        <a href="tel:0000000000" class="w-full bg-white/10 text-white font-bold py-4 rounded-2xl transition-all block text-center border border-white/20">
-                            📞 Call Office Directly
+                        <a href="tel:07000000000" class="w-full bg-white/5 border border-white/20 text-white font-bold py-5 rounded-2xl block text-center uppercase text-sm tracking-widest">
+                            Call Office
                         </a>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
 
     <script>
         const pricing = {
             Roofing: {
-                img: 'https://images.unsplash.com/photo-1635443328220-e67406a19f2c?auto=format&fit=crop&w=800',
+                img: 'https://images.unsplash.com/photo-1635443328220-e67406a19f2c?auto=format&fit=crop&w=1000',
                 multipliers: { 'Terrace': 1.0, 'Semi-Detached': 1.25, 'Detached': 1.5 },
                 options: [
-                    { id: 'r1', name: 'Full Roof Replacement', standard: 135, premium: 210, type: 'area' },
-                    { id: 'r2', name: 'EPDM Flat Roofing', standard: 95, premium: 155, type: 'area' },
-                    { id: 'r3', name: 'Guttering & Fascias', standard: 850, premium: 1400, type: 'fixed' }
+                    { id: 'r1', name: 'Slate / Tile Replacement', standard: 135, premium: 215, type: 'area' },
+                    { id: 'r2', name: 'EPDM Flat Roof System', standard: 95, premium: 160, type: 'area' },
+                    { id: 'r3', name: 'Guttering & Fascias', standard: 900, premium: 1500, type: 'fixed' }
+                ]
+            },
+            Driveways: {
+                img: 'https://images.unsplash.com/photo-1590231920030-9742a78f3e58?auto=format&fit=crop&w=1000',
+                options: [
+                    { id: 'd1', name: 'Block Paving', standard: 90, premium: 140, type: 'area' },
+                    { id: 'd2', name: 'Resin Bound', standard: 110, premium: 170, type: 'area' },
+                    { id: 'd3', name: 'Tarmac Drive', standard: 70, premium: 100, type: 'area' }
                 ]
             },
             Plumbing: {
-                img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800',
+                img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000',
                 options: [
-                    { id: 'p1', name: 'Boiler Installation', standard: 2900, premium: 4800, type: 'fixed' },
-                    { id: 'p2', name: 'Bathroom Plumbing', standard: 1900, premium: 3800, type: 'fixed' },
-                    { id: 'p3', name: 'Underfloor Heating', standard: 120, premium: 180, type: 'area' }
+                    { id: 'p1', name: 'Boiler Install', standard: 2950, premium: 4900, type: 'fixed' },
+                    { id: 'p2', name: 'Bathroom Remodel', standard: 1950, premium: 3950, type: 'fixed' }
                 ]
             },
-            Kitchen: {
-                img: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800',
-                options: [{ id: 'k1', name: 'Full Kitchen Fitting', standard: 4500, premium: 9500, type: 'fixed' }]
-            },
             Painting: {
-                img: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=800',
+                img: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1000',
                 options: [
-                    { id: 'pa1', name: 'Interior Decorating', standard: 35, premium: 65, type: 'area' },
-                    { id: 'pa2', name: 'Exterior Painting', standard: 45, premium: 85, type: 'area' }
+                    { id: 'pa1', name: 'Internal Walls', standard: 35, premium: 70, type: 'area' },
+                    { id: 'pa2', name: 'Exterior Masonry', standard: 45, premium: 90, type: 'area' }
                 ]
             }
         };
 
         let state = { category: null, tier: 'Standard', propertyType: 'Terrace', subType: null, unit: 'sqm' };
 
-        // Splash screen fade
-        window.addEventListener('load', () => { setTimeout(() => document.getElementById('intro').classList.add('hidden'), 2500); });
+        window.addEventListener('load', () => { setTimeout(() => document.getElementById('intro').style.display = 'none', 2500); });
 
-        // Build Large Vertical Categories
+        // Build Vertical Categories with HD Images
         const catList = document.getElementById('category-list');
         Object.keys(pricing).forEach(cat => {
             const div = document.createElement('div');
-            div.className = "relative w-full h-32 rounded-[2rem] overflow-hidden cursor-pointer transition-all border-4 border-transparent shadow-lg bg-slate-900";
+            div.className = "relative w-full h-44 rounded-[2.5rem] overflow-hidden cursor-pointer transition-all border-4 border-transparent bg-slate-900 shadow-xl";
             div.id = `cat-${cat}`;
             div.onclick = () => selectCategory(cat);
             div.innerHTML = `
-                <img src="${pricing[cat].img}" class="w-full h-full object-cover opacity-50">
-                <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center px-8">
-                    <span class="text-white font-black text-xl tracking-tighter uppercase italic">${cat}</span>
+                <img src="${pricing[cat].img}" class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex items-end p-8">
+                    <span class="text-white font-black text-3xl tracking-tighter uppercase italic">${cat}</span>
                 </div>
             `;
             catList.appendChild(div);
@@ -165,22 +163,29 @@
             state.category = cat; state.subType = null;
             document.querySelectorAll('#category-list div').forEach(d => d.classList.remove('active-card'));
             document.getElementById(`cat-${cat}`).classList.add('active-card');
-            document.getElementById('calculator-ui').classList.remove('hidden');
+            
+            // Show Calculator Section
+            const ui = document.getElementById('calculator-ui');
+            ui.classList.remove('hidden');
+            
             renderServices(); updatePrice();
+            
+            // Auto-scroll to setup
+            ui.scrollIntoView({ behavior: 'smooth' });
         }
 
         function setTier(t) {
             state.tier = t;
             const isStd = t === 'Standard';
-            document.getElementById('btn-standard').className = `flex-1 py-3 rounded-xl font-bold transition-all ${isStd ? 'bg-white shadow text-slate-800' : 'text-slate-400'}`;
-            document.getElementById('btn-premium').className = `flex-1 py-3 rounded-xl font-bold transition-all ${!isStd ? 'bg-white shadow text-slate-800' : 'text-slate-400'}`;
+            document.getElementById('btn-standard').className = `flex-1 py-4 rounded-xl font-black transition-all ${isStd ? 'bg-white shadow text-slate-800' : 'text-slate-400'}`;
+            document.getElementById('btn-premium').className = `flex-1 py-4 rounded-xl font-black transition-all ${!isStd ? 'bg-white shadow text-slate-800' : 'text-slate-400'}`;
             renderServices(); updatePrice();
         }
 
         function setProperty(p) {
             state.propertyType = p;
             ['Terrace', 'Semi-Detached', 'Detached'].forEach(type => {
-                document.getElementById(`btn-${type}`).className = `py-3 rounded-xl font-bold text-[10px] btn-3d ${p===type ? 'bg-blue-600 text-white shadow-lg' : 'glass text-slate-500'}`;
+                document.getElementById(`btn-${type}`).className = `py-4 rounded-xl font-black text-[10px] btn-3d ${p===type ? 'bg-blue-600 text-white shadow-lg' : 'glass text-slate-500'}`;
             });
             updatePrice();
         }
@@ -191,14 +196,14 @@
                 const isActive = state.subType?.id === opt.id;
                 const priceValue = state.tier === 'Standard' ? opt.standard : opt.premium;
                 const div = document.createElement('div');
-                div.className = `p-6 rounded-[2rem] border-2 cursor-pointer transition-all flex justify-between items-center ${isActive ? 'bg-slate-900 text-white border-blue-500 shadow-xl' : 'glass border-transparent text-slate-700'}`;
+                div.className = `p-8 rounded-[2.5rem] border-2 cursor-pointer transition-all flex justify-between items-center ${isActive ? 'bg-slate-900 text-white border-blue-500 shadow-2xl scale-[1.02]' : 'glass border-transparent text-slate-700'}`;
                 div.onclick = () => { state.subType = opt; renderServices(); updatePrice(); };
                 div.innerHTML = `
                     <div class="flex flex-col">
-                        <span class="font-black text-lg tracking-tight uppercase">${opt.name}</span>
-                        <span class="text-[10px] font-bold opacity-50 uppercase tracking-widest">${opt.type==='area'?'Sqm Calculation':'Fixed System Price'}</span>
+                        <span class="font-black text-xl tracking-tight uppercase">${opt.name}</span>
+                        <span class="text-[10px] font-black opacity-30 uppercase tracking-[0.2em] mt-1">${opt.type==='area'?'Price per unit':'Fixed base cost'}</span>
                     </div>
-                    <span class="font-black text-blue-500 text-xl">£${priceValue}${opt.type==='area'?'<small class="text-xs">/m²</small>':''}</span>
+                    <span class="font-black text-blue-600 text-2xl italic">£${priceValue}${opt.type==='area'?'<small class="text-xs">/m²</small>':''}</span>
                 `;
                 list.appendChild(div);
             });
@@ -208,8 +213,8 @@
 
         function setUnit(u) {
             state.unit = u;
-            document.getElementById('unit-sqm').className = `px-3 py-1 rounded ${u==='sqm' ? 'bg-white shadow-sm' : ''}`;
-            document.getElementById('unit-sqft').className = `px-3 py-1 rounded ${u==='sqft' ? 'bg-white shadow-sm' : ''}`;
+            document.getElementById('unit-sqm').className = `px-4 py-2 rounded-lg ${u==='sqm' ? 'bg-white shadow-sm' : ''}`;
+            document.getElementById('unit-sqft').className = `px-4 py-2 rounded-lg ${u==='sqft' ? 'bg-white shadow-sm' : ''}`;
             updatePrice();
         }
 
@@ -230,8 +235,8 @@
 
         function sendEmail() {
             const total = document.getElementById('display-price').innerText;
-            const body = `STRUCTURA ESTIMATE\n\nCategory: ${state.category}\nSelected: ${state.subType.name}\nCalculated Net: ${total}\n\nPlease contact me for a site survey.`;
-            window.location.href = `mailto:Sin19256031@students.wolvcoll.ac.uk?subject=STRUCTURA Quote Request&body=${encodeURIComponent(body)}`;
+            const body = `STRUCTURA ESTIMATE\nTrade: ${state.category}\nSelected: ${state.subType.name}\nValue: ${total}`;
+            window.location.href = `mailto:Sin19256031@students.wolvcoll.ac.uk?subject=ESTIMATE&body=${encodeURIComponent(body)}`;
         }
     </script>
 </body>
