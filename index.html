@@ -1,79 +1,95 @@
 <script>
-/* ===========================
-   STRUCTURA – PROFESSIONAL RATE CARD
-   UK Ballpark Pricing (2024)
-   =========================== */
-
 const pricing = {
 
-  /* ================= ROOFING ================= */
   Roofing: {
-    img: 'https://images.unsplash.com/photo-1628594244710-532158021d0a?auto=format&fit=crop&w=800',
+    img: 'https://images.unsplash.com/photo-1628594244710-532158021d0a',
     options: [
-      { id: 'r1', name: 'Natural Slate Roofing', standard: 140, premium: 230, type: 'area' },
-      { id: 'r2', name: 'Concrete Tile Roofing', standard: 95, premium: 150, type: 'area' },
-      { id: 'r3', name: 'EPDM / GRP Flat Roof', standard: 105, premium: 175, type: 'area' },
-      { id: 'r4', name: 'Chimney Rebuild / Lead Flashing', standard: 850, premium: 1500, type: 'fixed' }
+      {
+        id: 'r1',
+        name: 'Natural Slate Roofing',
+        standard: 140,
+        premium: 230,
+        type: 'area',
+        images: [
+          'https://images.unsplash.com/photo-1600585154207-3a1f40f8c30d',
+          'https://images.unsplash.com/photo-1581090700227-1e37b190418e'
+        ]
+      },
+      {
+        id: 'r2',
+        name: 'EPDM / GRP Flat Roof',
+        standard: 105,
+        premium: 175,
+        type: 'area',
+        images: [
+          'https://images.unsplash.com/photo-1597008734025-3db6b78f47b1',
+          'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6'
+        ]
+      },
+      {
+        id: 'r3',
+        name: 'Chimney Rebuild & Leadwork',
+        standard: 850,
+        premium: 1500,
+        type: 'fixed',
+        images: [
+          'https://images.unsplash.com/photo-1600566752355-35792bedcfea'
+        ]
+      }
     ]
   },
 
-  /* ================= DRIVEWAYS ================= */
-  Driveways: {
-    img: 'https://images.unsplash.com/photo-1590231920030-9742a78f3e58?auto=format&fit=crop&w=800',
-    options: [
-      { id: 'd1', name: 'Block Paving (MOT Base)', standard: 100, premium: 160, type: 'area' },
-      { id: 'd2', name: 'Resin Bound Stone', standard: 120, premium: 190, type: 'area' },
-      { id: 'd3', name: 'Imprinted Concrete', standard: 90, premium: 145, type: 'area' }
-    ]
-  },
-
-  /* ================= EXTENSIONS ================= */
   Extensions: {
-    img: 'https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&w=800',
+    img: 'https://images.unsplash.com/photo-1503387762-592dea58ef23',
     options: [
-      { id: 'e1', name: 'Single Storey Extension', standard: 1800, premium: 2600, type: 'area' },
-      { id: 'e2', name: 'Double Storey Extension', standard: 2300, premium: 3400, type: 'area' },
-      { id: 'e3', name: 'Loft Conversion (Dormer)', standard: 2000, premium: 3200, type: 'area' }
+      {
+        id: 'e1',
+        name: 'Single Storey Extension',
+        standard: 1800,
+        premium: 2600,
+        type: 'area',
+        images: [
+          'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c',
+          'https://images.unsplash.com/photo-1600585152915-d208bec867a1'
+        ]
+      },
+      {
+        id: 'e2',
+        name: 'Double Storey Extension',
+        standard: 2300,
+        premium: 3400,
+        type: 'area',
+        images: [
+          'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde'
+        ]
+      }
     ]
   },
 
-  /* ================= INTERIOR RENOVATION ================= */
   Interiors: {
-    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800',
+    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
     options: [
-      { id: 'i1', name: 'Full House Refurbishment', standard: 850, premium: 1400, type: 'area' },
-      { id: 'i2', name: 'Kitchen Supply & Install', standard: 8500, premium: 22000, type: 'fixed' },
-      { id: 'i3', name: 'Bathroom Installation', standard: 4800, premium: 12000, type: 'fixed' }
-    ]
-  },
-
-  /* ================= PLUMBING & HEATING ================= */
-  Plumbing: {
-    img: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800',
-    options: [
-      { id: 'p1', name: 'Full Plumbing Refit', standard: 4200, premium: 8500, type: 'fixed' },
-      { id: 'p2', name: 'Boiler Installation (Combi)', standard: 2400, premium: 3800, type: 'fixed' },
-      { id: 'p3', name: 'Underfloor Heating', standard: 85, premium: 140, type: 'area' }
-    ]
-  },
-
-  /* ================= STRUCTURAL ================= */
-  Structural: {
-    img: 'https://images.unsplash.com/photo-1581092334631-9d32f6f1f63a?auto=format&fit=crop&w=800',
-    options: [
-      { id: 's1', name: 'Steel Beam (RSJ) Install', standard: 1200, premium: 2200, type: 'fixed' },
-      { id: 's2', name: 'Structural Wall Removal', standard: 1800, premium: 3500, type: 'fixed' },
-      { id: 's3', name: 'Foundation Underpinning', standard: 950, premium: 1600, type: 'area' }
-    ]
-  },
-
-  /* ================= COMMERCIAL ================= */
-  Commercial: {
-    img: 'https://images.unsplash.com/photo-1503389152951-9f343605f61d?auto=format&fit=crop&w=800',
-    options: [
-      { id: 'c1', name: 'Office Fit-Out', standard: 1100, premium: 2000, type: 'area' },
-      { id: 'c2', name: 'Retail Shop Fit-Out', standard: 1300, premium: 2400, type: 'area' },
-      { id: 'c3', name: 'Warehouse Mezzanine', standard: 900, premium: 1500, type: 'area' }
+      {
+        id: 'i1',
+        name: 'Full House Refurbishment',
+        standard: 850,
+        premium: 1400,
+        type: 'area',
+        images: [
+          'https://images.unsplash.com/photo-1600585153490-76fb20a32601',
+          'https://images.unsplash.com/photo-1600566753151-384129cf4e3e'
+        ]
+      },
+      {
+        id: 'i2',
+        name: 'Kitchen Supply & Installation',
+        standard: 8500,
+        premium: 22000,
+        type: 'fixed',
+        images: [
+          'https://images.unsplash.com/photo-1556912173-3bb406ef7e77'
+        ]
+      }
     ]
   }
 
