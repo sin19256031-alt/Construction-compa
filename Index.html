@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction Pro | Estimate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fb; }
+        .navy-bg { background-color: #0b162c; }
+        .navy-text { color: #0b162c; }
+        .blue-text { color: #2196F3; }
+        .active-card { border: 3px solid #2196F3; transform: scale(0.98); }
+        .active-btn { background-color: #0b162c !important; color: white !important; }
+        .active-service { background-color: #0b162c !important; color: white !important; border-color: #0b162c !important; }
+        
+        /* Intro Animation */
+        #intro {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #0b162c; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 100;
+            transition: opacity 1s ease-out;
+        }
+        .hidden { display: none !important; opacity: 0; }
+    </style>
+</head>
+<body>
+
+    <div id="intro">
+        <img src="https://i.ibb.co/v4m8YmXm/1000021592.jpg" class="w-48 mb-4">
+        <h1 class="text-white text-2xl font-bold tracking-widest">CONSTRUCTION PRO</h1>
+        <p class="text-blue-400">Build. Design. Estimate.</p>
+    </div>
+
+    <div class="max-w-md mx-auto min-h-screen pb-10">
+        <nav class="bg-white p-4 flex items-center shadow-sm sticky top-0 z-50">
+            <img src="https://i.ibb.co/v4m8YmXm/1000021592.jpg" class="w-10 h-10 rounded mr-3">
+            <span class="text-xl font-black navy-text">Construction Pro</span>
+        </nav>
+
+        <div class="p-5">
+            <label class="text-xs font-bold text-slate-500 uppercase mb-3 block">1. Select Category</label>
+            <div class="flex overflow-x-auto space-x-4 pb-4 no-scrollbar" id="category-list">
+                </div>
+
+            <div id="calculator-ui" class="hidden bg-white p-6 rounded-[30px] shadow-lg mt-4">
+                <label class="text-xs font-bold text-slate-500 uppercase mb-3 block">2. Project Level</label>
+                <div class="flex bg-slate-100 p-1 rounded-xl mb-6">
+                    <button onclick="setTier('Standard')" id="btn-standard" class="flex-1 py-2 rounded-lg font-bold active-btn">Standard</button>
+                    <button onclick="setTier('Premium')" id="btn-premium" class="flex-1 py-2 rounded-lg font-bold text-slate-600">Premium</button>
+                </div>
+
+                <div id="roofing-complexity" class="hidden">
+                    <label class="text-xs font-bold text-slate-500 uppercase mb-3 block">3. House Type</label>
+                    <div class="flex bg-slate-100 p-1 rounded-xl mb-6 space-x-1">
+                        <button onclick="setProperty('Terrace')" id="btn-Terrace" class="flex-1 text-[10px] py-2 rounded-lg font-bold active-btn">Terrace</button>
+                        <button onclick="setProperty('Semi-Detached')" id="btn-Semi-Detached" class="flex-1 text-[10px] py-2 rounded-lg font-bold text-slate-600">Semi-Det</button>
+                        <button onclick="setProperty('Detached')" id="btn-Detached" class="flex-1 text-[10px] py-2 rounded-lg font-bold text-slate-600">Detached</button>
+                    </div>
+                </div>
+
+                <label class="text-xs font-bold text-slate-500 uppercase mb-3 block">Service Selection</label>
+                <div id="services-list" class="space-y-3 mb-6"></div>
+
+                <div id="area-input-section" class="hidden">
+                    <label class="text-xs font-bold text-slate-500 uppercase mb-3 block">Total Area</label>
+                    <div class="flex gap-2 mb-3">
+                        <button onclick="setUnit('sqm')" id="unit-sqm" class="px-4 py-2 rounded-lg bg-blue-500 text-white font-bold">m²</button>
+                        <button onclick="setUnit('sqft')" id="unit-sqft" class="px-4 py-2 rounded-lg bg-slate-300 text-white font-bold">ft²</button>
+                    </div>
+                    <input type="number" id="area-val" oninput="updatePrice()" placeholder="e.g. 85" class="w-full text-3xl font-bold border-b-4 border-blue-500 outline-none py-2">
+                </div>
+
+                <textarea id="notes" placeholder="Specific notes..." class="w-full bg-slate-50 rounded-xl p-4 mt-6 h-20 outline-none"></textarea>
+
+                <div id="price-box" class="hidden mt-8 p-6 bg-blue-50 rounded-[25px] text-center border-t-4 border-blue-500">
+                    <p class="text-xs font-bold text-slate-500">ESTIMATED COST</p>
+                    <h2 id="display-price" class="text-4xl font-black navy-text my-2">£0</h2>
+                    <button onclick="sendEmail()" class="w-full bg-blue-500 text-white font-bold py-4 rounded-xl mt-4 hover:bg-blue-600 transition">Book Site Survey</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data Structures
+        const pricing = {
+            Roofing: {
+                img: 'https://images.unsplash.com/photo-1635443328220-e67406a19f2c?w=400',
+                multipliers: { 'Terrace': 1.0, 'Semi-Detached': 1.25, 'Detached': 1.5 },
+                options: [
+                    { id: 'r1', name: 'New Slate/Tiled Roof', standard: 120, premium: 180, type: 'area' },
+                    { id: 'r2', name: 'Flat Roof (Rubber)', standard: 90, premium: 140, type: 'area' },
+                    { id: 'r3', name: 'Guttering & Fascias', standard: 650, premium: 1100, type: 'fixed' }
+                ]
+            },
+            Plumbing: {
+                img: 'https://images.unsplash.com/photo-1585704032915-c3400ca1f963?w=400',
+                options: [
+                    { id: 'p1', name: 'Full Boiler System', standard: 2500, premium: 4500, type: 'fixed' },
+                    { id: 'p2', name: 'Bathroom Refurb', standard: 1500, premium: 3000, type: 'fixed' },
+                    { id: 'p3', name: 'Underfloor Heating', standard: 100, premium: 160, type: 'area' }
+                ]
+            },
+            Kitchen: {
+                img: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=400',
+                options: [{ id: 'k1', name: 'Full Kitchen Fit', standard: 3500, premium: 8000, type: 'fixed' }]
+            },
+            Extension: {
+                img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400',
+                options: [
+                    { id: 'e1', name: 'Single Story', standard: 1400, premium: 2200, type: 'area' },
+                    { id: 'e2', name: 'Double Story', standard: 2000, premium: 3200, type: 'area' }
+                ]
+            }
+        };
+
+        let state = {
+            category: null,
+            tier: 'Standard',
+            propertyType: 'Terrace',
+            subType: null,
+            unit: 'sqm',
+            area: ''
+        };
+
+        // Initialize App
+        setTimeout(() => {
+            document.getElementById('intro').style.opacity = '0';
+            setTimeout(() => document.getElementById('intro').classList.add('hidden'), 1000);
+        }, 2000);
+
+        const catList = document.getElementById('category-list');
+        Object.keys(pricing).forEach(cat => {
+            const div = document.createElement('div');
+            div.className = "relative min-w-[140px] h-[90px] rounded-xl overflow-hidden cursor-pointer flex-shrink-0 bg-black";
+            div.id = `cat-${cat}`;
+            div.onclick = () => selectCategory(cat);
+            div.innerHTML = `<img src="${pricing[cat].img}" class="w-full h-full object-cover opacity-60">
+                             <span class="absolute bottom-2 left-2 text-white font-bold text-sm">${cat}</span>`;
+            catList.appendChild(div);
+        });
+
+        // Functions
+        function selectCategory(cat) {
+            state.category = cat;
+            state.subType = null;
+            document.querySelectorAll('#category-list div').forEach(d => d.classList.remove('active-card'));
+            document.getElementById(`cat-${cat}`).classList.add('active-card');
+            document.getElementById('calculator-ui').classList.remove('hidden');
+            renderServices();
+            updatePrice();
+        }
+
+        function setTier(t) {
+            state.tier = t;
+            document.getElementById('btn-standard').classList.toggle('active-btn', t === 'Standard');
+            document.getElementById('btn-premium').classList.toggle('active-btn', t === 'Premium');
+            renderServices();
+            updatePrice();
+        }
+
+        function setProperty(p) {
+            state.propertyType = p;
+            ['Terrace', 'Semi-Detached', 'Detached'].forEach(type => {
+                document.getElementById(`btn-${type}`).classList.toggle('active-btn', p === type);
+            });
+            updatePrice();
+        }
+
+        function renderServices() {
+            const list = document.getElementById('services-list');
+            list.innerHTML = '';
+            pricing[state.category].options.forEach(opt => {
+                const price = state.tier === 'Standard' ? opt.standard : opt.premium;
+                const div = document.createElement('div');
+                div.className = `flex justify-between p-4 rounded-xl border border-slate-200 cursor-pointer bg-slate-50 font-bold transition ${state.subType?.id === opt.id ? 'active-service' : ''}`;
+                div.onclick = () => {
+                    state.subType = opt;
+                    renderServices();
+                    updatePrice();
+                };
+                div.innerHTML = `<span>${opt.name}</span><span class="${state.subType?.id === opt.id ? 'text-blue-300' : 'text-blue-500'}">£${price}${opt.type === 'area' ? '/m²' : ''}</span>`;
+                list.appendChild(div);
+            });
+            
+            document.getElementById('roofing-complexity').classList.toggle('hidden', state.category !== 'Roofing' || state.subType?.type !== 'area');
+            document.getElementById('area-input-section').classList.toggle('hidden', state.subType?.type !== 'area');
+        }
+
+        function setUnit(u) {
+            state.unit = u;
+            document.getElementById('unit-sqm').classList.toggle('bg-blue-500', u === 'sqm');
+            document.getElementById('unit-sqft').classList.toggle('bg-blue-500', u === 'sqft');
+            updatePrice();
+        }
+
+        function updatePrice() {
+            if (!state.subType) return;
+            let base = state.tier === 'Standard' ? state.subType.standard : state.subType.premium;
+            
+            if (state.category === 'Roofing' && state.subType.type === 'area') {
+                base *= pricing.Roofing.multipliers[state.propertyType];
+            }
+
+            let total = base;
+            if (state.subType.type === 'area') {
+                let a = parseFloat(document.getElementById('area-val').value) || 0;
+                if (state.unit === 'sqft') a /= 10.764;
+                total = a * base;
+            }
+
+            document.getElementById('price-box').classList.toggle('hidden', total <= 0);
+            document.getElementById('display-price').innerText = '£' + Math.round(total).toLocaleString();
+        }
+
+        function sendEmail() {
+            const total = document.getElementById('display-price').innerText;
+            const notes = document.getElementById('notes').value;
+            const subject = `ESTIMATE REQUEST: ${state.tier} ${state.subType.name}`;
+            const body = `PROJECT SUMMARY\nCategory: ${state.category}\nService: ${state.subType.name}\nCost: ${total}\nNotes: ${notes}`;
+            window.location.href = `mailto:Sin19256031@students.wolvcoll.ac.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+    </script>
+</body>
+</html>
