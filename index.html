@@ -1,6 +1,93 @@
-<script>
-const pricing = {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STRUCTURA | Elite Construction Estimates</title>
 
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+    .glass {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+    }
+    .active-card {
+      border: 4px solid #3b82f6 !important;
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+
+<body class="pb-20">
+
+<div class="max-w-md mx-auto">
+
+  <!-- NAV -->
+  <nav class="glass sticky top-0 z-50 px-6 py-4 flex justify-between items-center border-b">
+    <span class="font-black text-xl uppercase italic">STRUCTURA</span>
+    <a href="tel:07000000000" class="bg-red-600 text-white px-4 py-2 rounded-xl text-xs font-black uppercase">
+      Urgent Call
+    </a>
+  </nav>
+
+  <div class="p-6 space-y-10">
+
+    <!-- CATEGORIES -->
+    <section>
+      <label class="text-xs font-black text-slate-400 uppercase tracking-widest block mb-4">
+        Project Category
+      </label>
+      <div id="category-list" class="space-y-4"></div>
+    </section>
+
+    <!-- CALCULATOR -->
+    <section id="calculator-ui" class="hidden space-y-6">
+
+      <!-- TIER -->
+      <div class="flex bg-slate-200 p-1 rounded-2xl">
+        <button id="btn-standard" onclick="setTier('Standard')" class="flex-1 bg-white py-3 rounded-xl font-black">
+          STANDARD
+        </button>
+        <button id="btn-premium" onclick="setTier('Premium')" class="flex-1 py-3 rounded-xl font-black text-slate-500">
+          PREMIUM
+        </button>
+      </div>
+
+      <!-- SERVICES -->
+      <div id="services-list" class="space-y-4"></div>
+
+      <!-- AREA INPUT -->
+      <div id="area-input-section" class="hidden glass p-6 rounded-3xl">
+        <label class="text-xs uppercase font-black text-slate-400">Area (m²)</label>
+        <input id="area-val" type="number" oninput="updatePrice()"
+          class="w-full text-6xl font-black bg-transparent outline-none text-blue-600"/>
+      </div>
+
+      <!-- PRICE -->
+      <div id="price-box" class="hidden bg-slate-900 p-8 rounded-3xl text-white">
+        <p class="text-xs uppercase tracking-widest text-blue-400">Estimated Cost</p>
+        <h2 id="display-price" class="text-5xl font-black mt-4">£0</h2>
+        <button onclick="sendEmail()" class="mt-6 w-full bg-blue-600 py-4 rounded-xl font-black uppercase">
+          Request Quote
+        </button>
+      </div>
+
+    </section>
+
+  </div>
+</div>
+
+<script>
+/* ================= DATA ================= */
+
+const pricing = {
   Roofing: {
     img: 'https://images.unsplash.com/photo-1628594244710-532158021d0a',
     options: [
@@ -17,23 +104,12 @@ const pricing = {
       },
       {
         id: 'r2',
-        name: 'EPDM / GRP Flat Roof',
+        name: 'EPDM Flat Roof',
         standard: 105,
         premium: 175,
         type: 'area',
         images: [
-          'https://images.unsplash.com/photo-1597008734025-3db6b78f47b1',
-          'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6'
-        ]
-      },
-      {
-        id: 'r3',
-        name: 'Chimney Rebuild & Leadwork',
-        standard: 850,
-        premium: 1500,
-        type: 'fixed',
-        images: [
-          'https://images.unsplash.com/photo-1600566752355-35792bedcfea'
+          'https://images.unsplash.com/photo-1597008734025-3db6b78f47b1'
         ]
       }
     ]
@@ -49,18 +125,7 @@ const pricing = {
         premium: 2600,
         type: 'area',
         images: [
-          'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c',
-          'https://images.unsplash.com/photo-1600585152915-d208bec867a1'
-        ]
-      },
-      {
-        id: 'e2',
-        name: 'Double Storey Extension',
-        standard: 2300,
-        premium: 3400,
-        type: 'area',
-        images: [
-          'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde'
+          'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c'
         ]
       }
     ]
@@ -76,22 +141,137 @@ const pricing = {
         premium: 1400,
         type: 'area',
         images: [
-          'https://images.unsplash.com/photo-1600585153490-76fb20a32601',
-          'https://images.unsplash.com/photo-1600566753151-384129cf4e3e'
-        ]
-      },
-      {
-        id: 'i2',
-        name: 'Kitchen Supply & Installation',
-        standard: 8500,
-        premium: 22000,
-        type: 'fixed',
-        images: [
-          'https://images.unsplash.com/photo-1556912173-3bb406ef7e77'
+          'https://images.unsplash.com/photo-1600585153490-76fb20a32601'
         ]
       }
     ]
   }
-
 };
+
+let state = {
+  category: null,
+  tier: 'Standard',
+  subType: null
+};
+
+/* ================= INIT ================= */
+
+const catList = document.getElementById('category-list');
+
+Object.keys(pricing).forEach(cat => {
+  const div = document.createElement('div');
+  div.className = 'h-32 rounded-3xl overflow-hidden cursor-pointer border-4 border-transparent relative';
+  div.id = `cat-${cat}`;
+  div.onclick = () => selectCategory(cat);
+
+  div.innerHTML = `
+    <img src="${pricing[cat].img}" class="absolute inset-0 w-full h-full object-cover opacity-70">
+    <div class="absolute inset-0 bg-black/60 flex items-end p-6">
+      <span class="text-white font-black text-2xl uppercase">${cat}</span>
+    </div>
+  `;
+  catList.appendChild(div);
+});
+
+/* ================= FUNCTIONS ================= */
+
+function selectCategory(cat) {
+  state.category = cat;
+  state.subType = null;
+
+  document.querySelectorAll('#category-list > div')
+    .forEach(d => d.classList.remove('active-card'));
+
+  document.getElementById(`cat-${cat}`).classList.add('active-card');
+
+  document.getElementById('calculator-ui').classList.remove('hidden');
+  renderServices();
+  updatePrice();
+}
+
+function setTier(tier) {
+  state.tier = tier;
+
+  document.getElementById('btn-standard').className =
+    tier === 'Standard'
+      ? 'flex-1 bg-white py-3 rounded-xl font-black'
+      : 'flex-1 py-3 rounded-xl font-black text-slate-500';
+
+  document.getElementById('btn-premium').className =
+    tier === 'Premium'
+      ? 'flex-1 bg-white py-3 rounded-xl font-black'
+      : 'flex-1 py-3 rounded-xl font-black text-slate-500';
+
+  renderServices();
+  updatePrice();
+}
+
+function renderServices() {
+  const list = document.getElementById('services-list');
+  list.innerHTML = '';
+
+  pricing[state.category].options.forEach(opt => {
+    const price = state.tier === 'Standard' ? opt.standard : opt.premium;
+
+    let imagesHTML = '';
+    if (opt.images) {
+      imagesHTML = `
+        <div class="flex gap-2 mt-3">
+          ${opt.images.map(img =>
+            `<img src="${img}" class="w-14 h-14 rounded-xl object-cover">`
+          ).join('')}
+        </div>`;
+    }
+
+    const div = document.createElement('div');
+    div.className = 'glass p-6 rounded-3xl flex justify-between items-start cursor-pointer';
+    div.onclick = () => {
+      state.subType = opt;
+      renderServices();
+      updatePrice();
+    };
+
+    div.innerHTML = `
+      <div>
+        <div class="font-black">${opt.name}</div>
+        <div class="text-xs opacity-50">${opt.type === 'area' ? 'per m²' : 'fixed price'}</div>
+        ${imagesHTML}
+      </div>
+      <div class="font-black text-blue-600">
+        £${price}${opt.type === 'area' ? '/m²' : ''}
+      </div>
+    `;
+
+    list.appendChild(div);
+  });
+
+  document.getElementById('area-input-section')
+    .classList.toggle('hidden', state.subType?.type !== 'area');
+}
+
+function updatePrice() {
+  if (!state.subType) return;
+
+  let price = state.tier === 'Standard'
+    ? state.subType.standard
+    : state.subType.premium;
+
+  if (state.subType.type === 'area') {
+    const area = parseFloat(document.getElementById('area-val').value) || 0;
+    price *= area;
+  }
+
+  document.getElementById('price-box').classList.remove('hidden');
+  document.getElementById('display-price').innerText =
+    '£' + Math.round(price).toLocaleString();
+}
+
+function sendEmail() {
+  const total = document.getElementById('display-price').innerText;
+  window.location.href =
+    `mailto:Sin19256031@students.wolvcoll.ac.uk?subject=Estimate Request&body=Category: ${state.category}%0DService: ${state.subType.name}%0DEstimate: ${total}`;
+}
 </script>
+
+</body>
+</html>
