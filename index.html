@@ -1,277 +1,337 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>STRUCTURA | Elite Construction Estimates</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Construction Co — Renovation, Extensions, Driveways</title>
+  <meta name="description" content="Local UK builders specialising in renovations, extensions, driveways and general house work. Free quotes and insured tradespeople." />
+  <meta name="theme-color" content="#d35400" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: #f8fafc;
-      color: #0f172a;
+    :root{
+      --accent:#d35400;
+      --accent-2:#ff7a2e;
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --muted:#6b7a8a;
+      --text:#0b1a2b;
+      --radius:12px;
+      --maxw:1100px;
+      --focus:3px solid #ffb38a;
+      font-family:Inter,system-ui,Arial,sans-serif;
+      color-scheme: light;
     }
-    .glass {
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(10px);
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:linear-gradient(180deg,#f6f8fb 0%, #ffffff 100%);color:var(--text);line-height:1.5;font-size:16px}
+    a{color:var(--accent)}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:18px}
+    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:12px;top:12px;width:auto;height:auto;padding:8px 12px;background:#000;color:#fff;border-radius:6px;z-index:9999}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:56px;width:56px;object-fit:contain;border-radius:8px}
+    .brand h1{font-size:18px;margin:0;color:var(--accent);font-weight:800}
+    nav a{margin-left:16px;color:inherit;text-decoration:none;font-weight:600}
+    .top-cta{display:flex;align-items:center;gap:12px}
+    .phone{background:var(--card);padding:8px 12px;border-radius:10px;box-shadow:0 6px 18px rgba(16,32,39,0.06);font-weight:700}
+    .badge{display:inline-flex;align-items:center;gap:10px;background:#0b74de;color:#fff;padding:8px 12px;border-radius:999px;font-weight:700;box-shadow:0 6px 18px rgba(11,23,40,0.06)}
+    .badge svg{width:20px;height:20px;flex-shrink:0}
+    .hero{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;padding:28px 0}
+    @media(min-width:900px){.hero{grid-template-columns:1fr 420px}}
+    .hero-card{background:var(--card);padding:22px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(16,32,39,0.06)}
+    .hero h2{font-size:clamp(24px,4.5vw,40px);margin:0 0 10px 0}
+    .hero p{margin:0 0 12px 0;color:var(--muted)}
+    .btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;display:inline-block;font-weight:700;box-shadow:0 8px 20px rgba(211,84,0,0.18)}
+    .section{margin-top:28px}
+    .section h3{margin:0 0 12px 0}
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .service{
+      background:var(--card);padding:14px;border-radius:12px;display:flex;gap:12px;align-items:center;
+      box-shadow:0 6px 18px rgba(16,32,39,0.04);transition:transform .35s ease,box-shadow .35s ease;
     }
-    .active-card {
-      border: 4px solid #3b82f6 !important;
-      transform: scale(0.98);
-    }
+    .service:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(16,32,39,0.08)}
+    .service .icon{width:72px;height:72px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f3f6fb}
+    .service .icon img{width:100%;height:100%;object-fit:cover}
+    .service .meta{flex:1}
+    .service .meta strong{display:block;margin-bottom:6px}
+    .case-grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:900px){.case-grid{grid-template-columns:repeat(2,1fr)}}
+    .case{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(16,32,39,0.06);display:flex;flex-direction:column}
+    .case .media{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+    .case picture img{width:100%;height:180px;object-fit:cover;display:block}
+    .case .content{padding:14px}
+    .case .meta{color:var(--muted);font-size:14px;margin-bottom:8px}
+    .case strong{display:block;margin-bottom:8px}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:12px}
+    .gallery img{width:100%;height:140px;object-fit:cover;border-radius:10px;transition:transform .35s ease}
+    .gallery img:hover{transform:scale(1.03)}
+    .contact-card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(16,32,39,0.04);max-width:720px}
+    .form-row{display:grid;grid-template-columns:1fr;gap:8px}
+    @media(min-width:700px){.form-row{grid-template-columns:1fr 1fr}}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef6;font-size:15px}
+    input:focus,textarea:focus,button:focus{outline:none;box-shadow:var(--focus)}
+    button[type="submit"]{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;border:0;font-weight:700;cursor:pointer}
+    footer{padding:18px 0;color:var(--muted);font-size:14px}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .fade-in{animation:fadeIn .7s ease forwards;opacity:0}
+    @keyframes fadeIn{to{opacity:1}}
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"Your Construction Co",
+    "image":["https://example.com/logo.jpg"],
+    "@id":"https://example.com/#business",
+    "url":"https://example.com",
+    "telephone":"+441234567890",
+    "priceRange":"££",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Unit 4, Example Road",
+      "addressLocality":"Perton",
+      "addressRegion":"Staffordshire",
+      "postalCode":"WV6 7XX",
+      "addressCountry":"GB"
+    },
+    "openingHours":"Mo-Fr 08:00-18:00",
+    "sameAs":["https://www.facebook.com/yourcompany","https://www.instagram.com/yourcompany"],
+    "areaServed":{"@type":"Place","name":"Perton; Wolverhampton; Staffordshire; West Midlands"},
+    "hasCredential":[{"@type":"EducationalOccupationalCredential","credentialCategory":"Licence","name":"Builder Licence: LIC-UK-0000"}]
+  }
+  </script>
 </head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
-<body class="pb-20">
-
-<div class="max-w-md mx-auto">
-
-  <!-- NAV -->
-  <nav class="glass sticky top-0 z-50 px-6 py-4 flex justify-between items-center border-b">
-    <span class="font-black text-xl uppercase italic">STRUCTURA</span>
-    <a href="tel:07000000000" class="bg-red-600 text-white px-4 py-2 rounded-xl text-xs font-black uppercase">
-      Urgent Call
-    </a>
-  </nav>
-
-  <div class="p-6 space-y-10">
-
-    <!-- CATEGORIES -->
-    <section>
-      <label class="text-xs font-black text-slate-400 uppercase tracking-widest block mb-4">
-        Project Category
-      </label>
-      <div id="category-list" class="space-y-4"></div>
-    </section>
-
-    <!-- CALCULATOR -->
-    <section id="calculator-ui" class="hidden space-y-6">
-
-      <!-- TIER -->
-      <div class="flex bg-slate-200 p-1 rounded-2xl">
-        <button id="btn-standard" onclick="setTier('Standard')" class="flex-1 bg-white py-3 rounded-xl font-black">
-          STANDARD
-        </button>
-        <button id="btn-premium" onclick="setTier('Premium')" class="flex-1 py-3 rounded-xl font-black text-slate-500">
-          PREMIUM
-        </button>
+  <div class="wrap">
+    <header role="banner" aria-label="Site header">
+      <div class="brand">
+        <img src="logo.jpg" alt="Your Construction Co logo" id="logo">
+        <div>
+          <h1 id="company-name">Your Construction Co</h1>
+          <div class="muted" style="font-size:13px">Renovation • Extensions • Driveways • General Work</div>
+        </div>
       </div>
 
-      <!-- SERVICES -->
-      <div id="services-list" class="space-y-4"></div>
+      <div class="top-cta">
+        <nav aria-label="Primary" role="navigation">
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
 
-      <!-- AREA INPUT -->
-      <div id="area-input-section" class="hidden glass p-6 rounded-3xl">
-        <label class="text-xs uppercase font-black text-slate-400">Area (m²)</label>
-        <input id="area-val" type="number" oninput="updatePrice()"
-          class="w-full text-6xl font-black bg-transparent outline-none text-blue-600"/>
+        <div class="badge" aria-hidden="false" role="status" title="Licensed and insured">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2l3 2 4 1v5c0 5-4 9-7 10-3-1-7-5-7-10V5l4-1 3-2z" fill="#fff"/>
+          </svg>
+          <span style="font-size:13px">Licensed & Insured</span>
+        </div>
+
+        <div class="phone" aria-label="Call us">
+          <a href="tel:+441234567890" style="color:inherit;text-decoration:none">+44 1234 567 890</a>
+        </div>
       </div>
+    </header>
 
-      <!-- PRICE -->
-      <div id="price-box" class="hidden bg-slate-900 p-8 rounded-3xl text-white">
-        <p class="text-xs uppercase tracking-widest text-blue-400">Estimated Cost</p>
-        <h2 id="display-price" class="text-5xl font-black mt-4">£0</h2>
-        <button onclick="sendEmail()" class="mt-6 w-full bg-blue-600 py-4 rounded-xl font-black uppercase">
-          Request Quote
-        </button>
-      </div>
+    <main id="main" role="main" aria-labelledby="hero-heading">
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-card fade-in" style="animation-delay:.1s">
+          <h2 id="hero-heading">Quality home renovations and extensions you can trust</h2>
+          <p>Local, insured tradespeople delivering reliable work on time and on budget. Free site visit and written quote.</p>
 
-    </section>
+          <form class="contact-card" action="https://formspree.io/f/your-form-id" method="POST" aria-label="Quick quote form" style="display:flex;gap:10px;flex-direction:column;max-width:520px">
+            <div style="display:flex;gap:8px">
+              <label class="sr-only" for="q-name">Name</label>
+              <input id="q-name" name="name" placeholder="Your name" required aria-required="true">
+              <label class="sr-only" for="q-contact">Contact</label>
+              <input id="q-contact" name="contact" placeholder="Phone or email" required aria-required="true">
+            </div>
+            <input name="postcode" placeholder="Postcode (optional)" aria-label="Postcode">
+            <div style="display:flex;gap:8px;align-items:center">
+              <button class="btn" type="submit">Request a free quote</button>
+              <div class="muted" style="font-size:13px">We reply within 24 hours</div>
+            </div>
+          </form>
+        </div>
 
-  </div>
-</div>
+        <aside class="hero-card fade-in" style="animation-delay:.2s" aria-labelledby="quick-facts">
+          <h3 id="quick-facts" style="margin-top:0">Quick facts</h3>
+          <ul style="margin:8px 0 0 18px;color:var(--muted)">
+            <li>Fully insured and licensed (Licence: <strong id="licence-number">LIC-UK-0000</strong>)</li>
+            <li>Transparent written quotes and fixed timelines</li>
+            <li>Local team covering Perton, Wolverhampton and surrounding areas</li>
+          </ul>
+        </aside>
+      </section>
 
-<script>
-/* ================= DATA ================= */
+      <section id="services" class="section" aria-labelledby="services-heading">
+        <h3 id="services-heading">Our Services</h3>
+        <div class="services" id="services-list" role="list">
+          <article class="service" role="listitem" aria-labelledby="s-renovation">
+            <div class="icon" aria-hidden="true">
+              <picture>
+                <source type="image/webp" srcset="images/renovation.webp 1x, images/renovation@2x.webp 2x">
+                <img src="images/renovation.jpg" alt="Kitchen renovation example" width="72" height="72" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="meta">
+              <strong id="s-renovation">Renovation</strong>
+              <div class="muted">Kitchen, bathroom and whole‑house renovations with attention to detail and project management.</div>
+            </div>
+          </article>
 
-const pricing = {
-  Roofing: {
-    img: 'https://images.unsplash.com/photo-1628594244710-532158021d0a',
-    options: [
-      {
-        id: 'r1',
-        name: 'Natural Slate Roofing',
-        standard: 140,
-        premium: 230,
-        type: 'area',
-        images: [
-          'https://images.unsplash.com/photo-1600585154207-3a1f40f8c30d',
-          'https://images.unsplash.com/photo-1581090700227-1e37b190418e'
-        ]
-      },
-      {
-        id: 'r2',
-        name: 'EPDM Flat Roof',
-        standard: 105,
-        premium: 175,
-        type: 'area',
-        images: [
-          'https://images.unsplash.com/photo-1597008734025-3db6b78f47b1'
-        ]
-      }
-    ]
-  },
+          <article class="service" role="listitem" aria-labelledby="s-extensions">
+            <div class="icon" aria-hidden="true">
+              <picture>
+                <source type="image/webp" srcset="images/extensions.webp 1x, images/extensions@2x.webp 2x">
+                <img src="images/extensions.jpg" alt="House extension example" width="72" height="72" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="meta">
+              <strong id="s-extensions">Extensions</strong>
+              <div class="muted">Single and multi‑storey extensions, planning support and build management.</div>
+            </div>
+          </article>
 
-  Extensions: {
-    img: 'https://images.unsplash.com/photo-1503387762-592dea58ef23',
-    options: [
-      {
-        id: 'e1',
-        name: 'Single Storey Extension',
-        standard: 1800,
-        premium: 2600,
-        type: 'area',
-        images: [
-          'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c'
-        ]
-      }
-    ]
-  },
+          <article class="service" role="listitem" aria-labelledby="s-driveways">
+            <div class="icon" aria-hidden="true">
+              <picture>
+                <source type="image/webp" srcset="images/driveways.webp 1x, images/driveways@2x.webp 2x">
+                <img src="images/driveways.jpg" alt="Driveway paving example" width="72" height="72" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="meta">
+              <strong id="s-driveways">Driveways</strong>
+              <div class="muted">Resin, block paving and tarmac driveways with drainage and sub‑base solutions.</div>
+            </div>
+          </article>
 
-  Interiors: {
-    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
-    options: [
-      {
-        id: 'i1',
-        name: 'Full House Refurbishment',
-        standard: 850,
-        premium: 1400,
-        type: 'area',
-        images: [
-          'https://images.unsplash.com/photo-1600585153490-76fb20a32601'
-        ]
-      }
-    ]
-  }
-};
+          <article class="service" role="listitem" aria-labelledby="s-general">
+            <div class="icon" aria-hidden="true">
+              <picture>
+                <source type="image/webp" srcset="images/general.webp 1x, images/general@2x.webp 2x">
+                <img src="images/general.jpg" alt="General house work example" width="72" height="72" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="meta">
+              <strong id="s-general">General House Work</strong>
+              <div class="muted">Plastering, roofing, carpentry, and coordination of electrical and plumbing trades.</div>
+            </div>
+          </article>
+        </div>
+      </section>
 
-let state = {
-  category: null,
-  tier: 'Standard',
-  subType: null
-};
+      <section id="projects" class="section" aria-labelledby="projects-heading">
+        <h3 id="projects-heading">Case studies — recent projects</h3>
+        <p class="muted">Real examples showing the brief, our approach and the result. Costs are indicative and exclude VAT unless stated.</p>
 
-/* ================= INIT ================= */
+        <div class="case-grid" role="list">
+          <article class="case" role="listitem" aria-labelledby="case1-title">
+            <div class="media">
+              <picture>
+                <source type="image/webp" srcset="images/case1-before.webp">
+                <img src="images/case1-before.jpg" alt="Before: small kitchen, dated layout" loading="lazy" decoding="async">
+              </picture>
+              <picture>
+                <source type="image/webp" srcset="images/case1-after.webp">
+                <img src="images/case1-after.jpg" alt="After: open-plan kitchen with island" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="content">
+              <div class="meta">Renovation • Wolverhampton • Completed: 10 weeks</div>
+              <strong id="case1-title">Open-plan kitchen transformation</strong>
+              <p>Brief: Remove dividing wall, reconfigure layout and install new kitchen units with island. Approach: Structural opening with RSJ, new wiring and plumbing, bespoke cabinetry. Result: Bright open-plan kitchen, improved flow and increased property value. Indicative cost: £18,500 (materials & labour).</p>
+            </div>
+          </article>
 
-const catList = document.getElementById('category-list');
+          <article class="case" role="listitem" aria-labelledby="case2-title">
+            <div class="media">
+              <picture>
+                <source type="image/webp" srcset="images/case2-before.webp">
+                <img src="images/case2-before.jpg" alt="Before: small rear garden and old patio" loading="lazy" decoding="async">
+              </picture>
+              <picture>
+                <source type="image/webp" srcset="images/case2-after.webp">
+                <img src="images/case2-after.jpg" alt="After: single-storey rear extension with bi-folds" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="content">
+              <div class="meta">Extension • Staffordshire • Completed: 14 weeks</div>
+              <strong id="case2-title">Single-storey rear extension with bi-fold doors</strong>
+              <p>Brief: Create a family dining area with large glazed doors. Approach: Foundations, insulated slab, structural lintels, new roof and bi-fold installation. Result: Spacious dining area with natural light. Indicative cost: £36,000 (planning & build).</p>
+            </div>
+          </article>
 
-Object.keys(pricing).forEach(cat => {
-  const div = document.createElement('div');
-  div.className = 'h-32 rounded-3xl overflow-hidden cursor-pointer border-4 border-transparent relative';
-  div.id = `cat-${cat}`;
-  div.onclick = () => selectCategory(cat);
+          <article class="case" role="listitem" aria-labelledby="case3-title">
+            <div class="media">
+              <picture>
+                <source type="image/webp" srcset="images/case3-before.webp">
+                <img src="images/case3-before.jpg" alt="Before: cracked, uneven driveway" loading="lazy" decoding="async">
+              </picture>
+              <picture>
+                <source type="image/webp" srcset="images/case3-after.webp">
+                <img src="images/case3-after.jpg" alt="After: new resin-bound driveway" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="content">
+              <div class="meta">Driveway • Perton • Completed: 5 days</div>
+              <strong id="case3-title">Resin-bound driveway with drainage upgrade</strong>
+              <p>Brief: Replace failing driveway and improve drainage. Approach: Remove old surface, install new sub-base, resin-bound finish and channel drain. Result: Durable, low-maintenance driveway. Indicative cost: £4,200 (materials & labour).</p>
+            </div>
+          </article>
 
-  div.innerHTML = `
-    <img src="${pricing[cat].img}" class="absolute inset-0 w-full h-full object-cover opacity-70">
-    <div class="absolute inset-0 bg-black/60 flex items-end p-6">
-      <span class="text-white font-black text-2xl uppercase">${cat}</span>
-    </div>
-  `;
-  catList.appendChild(div);
-});
+          <article class="case" role="listitem" aria-labelledby="case4-title">
+            <div class="media">
+              <picture>
+                <source type="image/webp" srcset="images/case4-before.webp">
+                <img src="images/case4-before.jpg" alt="Before: damp bathroom and poor layout" loading="lazy" decoding="async">
+              </picture>
+              <picture>
+                <source type="image/webp" srcset="images/case4-after.webp">
+                <img src="images/case4-after.jpg" alt="After: modern bathroom with walk-in shower" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="content">
+              <div class="meta">Bathroom renovation • Wolverhampton • Completed: 2 weeks</div>
+              <strong id="case4-title">Modern bathroom with walk-in shower</strong>
+              <p>Brief: Replace dated bathroom and resolve damp. Approach: Remove old fittings, treat damp, install new waterproofing, tiling and fixtures. Result: Contemporary, waterproof bathroom with improved ventilation. Indicative cost: £6,800.</p>
+            </div>
+          </article>
+        </div>
 
-/* ================= FUNCTIONS ================= */
+        <h4 style="margin-top:18px">Project gallery</h4>
+        <div class="gallery" aria-hidden="false">
+          <picture><source type="image/webp" srcset="images/project1.webp"><img src="images/project1.jpg" alt="Project image 1" loading="lazy" decoding="async"></picture>
+          <picture><source type="image/webp" srcset="images/project2.webp"><img src="images/project2.jpg" alt="Project image 2" loading="lazy" decoding="async"></picture>
+          <picture><source type="image/webp" srcset="images/project3.webp"><img src="images/project3.jpg" alt="Project image 3" loading="lazy" decoding="async"></picture>
+          <picture><source type="image/webp" srcset="images/project4.webp"><img src="images/project4.jpg" alt="Project image 4" loading="lazy" decoding="async"></picture>
+        </div>
+      </section>
 
-function selectCategory(cat) {
-  state.category = cat;
-  state.subType = null;
+      <section id="contact" class="section" aria-labelledby="contact-heading">
+        <h3 id="contact-heading">Contact and quote</h3>
+        <div class="contact-card" role="form" aria-label="Contact form">
+          <p class="muted">Email: <strong><a href="mailto:Sin19256031@students.wolvcoll.ac.uk">Sin19256031@students.wolvcoll.ac.uk</a></strong> • Phone: <strong><a href="tel:+441234567890">+44 1234 567 890</a></strong></p>
 
-  document.querySelectorAll('#category-list > div')
-    .forEach(d => d.classList.remove('active-card'));
-
-  document.getElementById(`cat-${cat}`).classList.add('active-card');
-
-  document.getElementById('calculator-ui').classList.remove('hidden');
-  renderServices();
-  updatePrice();
-}
-
-function setTier(tier) {
-  state.tier = tier;
-
-  document.getElementById('btn-standard').className =
-    tier === 'Standard'
-      ? 'flex-1 bg-white py-3 rounded-xl font-black'
-      : 'flex-1 py-3 rounded-xl font-black text-slate-500';
-
-  document.getElementById('btn-premium').className =
-    tier === 'Premium'
-      ? 'flex-1 bg-white py-3 rounded-xl font-black'
-      : 'flex-1 py-3 rounded-xl font-black text-slate-500';
-
-  renderServices();
-  updatePrice();
-}
-
-function renderServices() {
-  const list = document.getElementById('services-list');
-  list.innerHTML = '';
-
-  pricing[state.category].options.forEach(opt => {
-    const price = state.tier === 'Standard' ? opt.standard : opt.premium;
-
-    let imagesHTML = '';
-    if (opt.images) {
-      imagesHTML = `
-        <div class="flex gap-2 mt-3">
-          ${opt.images.map(img =>
-            `<img src="${img}" class="w-14 h-14 rounded-xl object-cover">`
-          ).join('')}
-        </div>`;
-    }
-
-    const div = document.createElement('div');
-    div.className = 'glass p-6 rounded-3xl flex justify-between items-start cursor-pointer';
-    div.onclick = () => {
-      state.subType = opt;
-      renderServices();
-      updatePrice();
-    };
-
-    div.innerHTML = `
-      <div>
-        <div class="font-black">${opt.name}</div>
-        <div class="text-xs opacity-50">${opt.type === 'area' ? 'per m²' : 'fixed price'}</div>
-        ${imagesHTML}
-      </div>
-      <div class="font-black text-blue-600">
-        £${price}${opt.type === 'area' ? '/m²' : ''}
-      </div>
-    `;
-
-    list.appendChild(div);
-  });
-
-  document.getElementById('area-input-section')
-    .classList.toggle('hidden', state.subType?.type !== 'area');
-}
-
-function updatePrice() {
-  if (!state.subType) return;
-
-  let price = state.tier === 'Standard'
-    ? state.subType.standard
-    : state.subType.premium;
-
-  if (state.subType.type === 'area') {
-    const area = parseFloat(document.getElementById('area-val').value) || 0;
-    price *= area;
-  }
-
-  document.getElementById('price-box').classList.remove('hidden');
-  document.getElementById('display-price').innerText =
-    '£' + Math.round(price).toLocaleString();
-}
-
-function sendEmail() {
-  const total = document.getElementById('display-price').innerText;
-  window.location.href =
-    `mailto:Sin19256031@students.wolvcoll.ac.uk?subject=Estimate Request&body=Category: ${state.category}%0DService: ${state.subType.name}%0DEstimate: ${total}`;
-}
-</script>
-
-</body>
-</html>
+          <form action="https://formspree.io/f/your-form-id" method="POST" style="margin-top:12px">
+            <div class="form-row">
+              <label class="sr-only" for="name">Name</label>
+              <input id="name" name="name" placeholder="Your name" required aria-required="true">
+              <label class="sr-only" for="contact">Phone or email</label>
+              <input id="contact" name="contact" placeholder="Phone or email" required aria-required="true">
+            </div>
+            <div style="margin-top:8px">
+              <label class="sr-only" for="address">Project address</label>
+              <input id="address" name="address" placeholder="Project address or postcode">
+            </div>
+            <div style="margin-top:8px">
+              <label class="sr-only" for="message">Project details</label>
+              <textarea id="message" name="message" rows="4" placeholder="Brief project details"></textarea>
+            </div>
+            <div style="margin-top:10px;display:flex;gap:10px;align-items:center">
+              <button type="submit">Send request</button>
+              <div class="muted" style="font-size:13px">We reply within 24 hour
