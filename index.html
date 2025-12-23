@@ -10,17 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --accent:#d35400;
-      --accent-2:#ff7a2e;
-      --bg:#f6f8fb;
-      --card:#ffffff;
-      --muted:#6b7a8a;
-      --text:#0b1a2b;
-      --radius:12px;
-      --maxw:1100px;
-      --focus:3px solid #ffb38a;
-      font-family:Inter,system-ui,Arial,sans-serif;
-      color-scheme: light;
+      --accent:#d35400; --accent-2:#ff7a2e; --bg:#f6f8fb; --card:#ffffff;
+      --muted:#6b7a8a; --text:#0b1a2b; --radius:12px; --maxw:1100px; --focus:3px solid #ffb38a;
+      font-family:Inter,system-ui,Arial,sans-serif; color-scheme: light;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -47,10 +39,7 @@
     .section{margin-top:28px}
     .section h3{margin:0 0 12px 0}
     .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-    .service{
-      background:var(--card);padding:14px;border-radius:12px;display:flex;gap:12px;align-items:center;
-      box-shadow:0 6px 18px rgba(16,32,39,0.04);transition:transform .35s ease,box-shadow .35s ease;
-    }
+    .service{background:var(--card);padding:14px;border-radius:12px;display:flex;gap:12px;align-items:center;box-shadow:0 6px 18px rgba(16,32,39,0.04);transition:transform .35s ease,box-shadow .35s ease}
     .service:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(16,32,39,0.08)}
     .service .icon{width:72px;height:72px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f3f6fb}
     .service .icon img{width:100%;height:100%;object-fit:cover}
@@ -84,7 +73,7 @@
     "@context":"https://schema.org",
     "@type":"LocalBusiness",
     "name":"Your Construction Co",
-    "image":["https://example.com/logo.jpg"],
+    "image":["https://picsum.photos/seed/logo/600/400"],
     "@id":"https://example.com/#business",
     "url":"https://example.com",
     "telephone":"+441234567890",
@@ -110,7 +99,8 @@
   <div class="wrap">
     <header role="banner" aria-label="Site header">
       <div class="brand">
-        <img src="logo.jpg" alt="Your Construction Co logo" id="logo">
+        <!-- placeholder logo (replace with your logo.jpg when ready) -->
+        <img src="https://picsum.photos/seed/logo/96/96" alt="Your Construction Co logo" id="logo">
         <div>
           <h1 id="company-name">Your Construction Co</h1>
           <div class="muted" style="font-size:13px">Renovation • Extensions • Driveways • General Work</div>
@@ -173,10 +163,7 @@
         <div class="services" id="services-list" role="list">
           <article class="service" role="listitem" aria-labelledby="s-renovation">
             <div class="icon" aria-hidden="true">
-              <picture>
-                <source type="image/webp" srcset="images/renovation.webp 1x, images/renovation@2x.webp 2x">
-                <img src="images/renovation.jpg" alt="Kitchen renovation example" width="72" height="72" loading="lazy" decoding="async">
-              </picture>
+              <img src="https://picsum.photos/seed/renovation/160/160" alt="Kitchen renovation example" width="72" height="72" loading="lazy" decoding="async">
             </div>
             <div class="meta">
               <strong id="s-renovation">Renovation</strong>
@@ -186,10 +173,7 @@
 
           <article class="service" role="listitem" aria-labelledby="s-extensions">
             <div class="icon" aria-hidden="true">
-              <picture>
-                <source type="image/webp" srcset="images/extensions.webp 1x, images/extensions@2x.webp 2x">
-                <img src="images/extensions.jpg" alt="House extension example" width="72" height="72" loading="lazy" decoding="async">
-              </picture>
+              <img src="https://picsum.photos/seed/extensions/160/160" alt="House extension example" width="72" height="72" loading="lazy" decoding="async">
             </div>
             <div class="meta">
               <strong id="s-extensions">Extensions</strong>
@@ -199,10 +183,7 @@
 
           <article class="service" role="listitem" aria-labelledby="s-driveways">
             <div class="icon" aria-hidden="true">
-              <picture>
-                <source type="image/webp" srcset="images/driveways.webp 1x, images/driveways@2x.webp 2x">
-                <img src="images/driveways.jpg" alt="Driveway paving example" width="72" height="72" loading="lazy" decoding="async">
-              </picture>
+              <img src="https://picsum.photos/seed/driveway/160/160" alt="Driveway paving example" width="72" height="72" loading="lazy" decoding="async">
             </div>
             <div class="meta">
               <strong id="s-driveways">Driveways</strong>
@@ -212,10 +193,7 @@
 
           <article class="service" role="listitem" aria-labelledby="s-general">
             <div class="icon" aria-hidden="true">
-              <picture>
-                <source type="image/webp" srcset="images/general.webp 1x, images/general@2x.webp 2x">
-                <img src="images/general.jpg" alt="General house work example" width="72" height="72" loading="lazy" decoding="async">
-              </picture>
+              <img src="https://picsum.photos/seed/general/160/160" alt="General house work example" width="72" height="72" loading="lazy" decoding="async">
             </div>
             <div class="meta">
               <strong id="s-general">General House Work</strong>
@@ -232,14 +210,8 @@
         <div class="case-grid" role="list">
           <article class="case" role="listitem" aria-labelledby="case1-title">
             <div class="media">
-              <picture>
-                <source type="image/webp" srcset="images/case1-before.webp">
-                <img src="images/case1-before.jpg" alt="Before: small kitchen, dated layout" loading="lazy" decoding="async">
-              </picture>
-              <picture>
-                <source type="image/webp" srcset="images/case1-after.webp">
-                <img src="images/case1-after.jpg" alt="After: open-plan kitchen with island" loading="lazy" decoding="async">
-              </picture>
+              <img src="https://picsum.photos/seed/case1before/600/400" alt="Before: small kitchen, dated layout" loading="lazy" decoding="async">
+              <img src="https://picsum.photos/seed/case1after/600/400" alt="After: open-plan kitchen with island" loading="lazy" decoding="async">
             </div>
             <div class="content">
               <div class="meta">Renovation • Wolverhampton • Completed: 10 weeks</div>
@@ -250,14 +222,8 @@
 
           <article class="case" role="listitem" aria-labelledby="case2-title">
             <div class="media">
-              <picture>
-                <source type="image/webp" srcset="images/case2-before.webp">
-                <img src="images/case2-before.jpg" alt="Before: small rear garden and old patio" loading="lazy" decoding="async">
-              </picture>
-              <picture>
-                <source type="image/webp" srcset="images/case2-after.webp">
-                <img src="images/case2-after.jpg" alt="After: single-storey rear extension with bi-folds" loading="lazy" decoding="async">
-              </picture>
+              <img src="https://picsum.photos/seed/case2before/600/400" alt="Before: small rear garden and old patio" loading="lazy" decoding="async">
+              <img src="https://picsum.photos/seed/case2after/600/400" alt="After: single-storey rear extension with bi-folds" loading="lazy" decoding="async">
             </div>
             <div class="content">
               <div class="meta">Extension • Staffordshire • Completed: 14 weeks</div>
@@ -268,14 +234,8 @@
 
           <article class="case" role="listitem" aria-labelledby="case3-title">
             <div class="media">
-              <picture>
-                <source type="image/webp" srcset="images/case3-before.webp">
-                <img src="images/case3-before.jpg" alt="Before: cracked, uneven driveway" loading="lazy" decoding="async">
-              </picture>
-              <picture>
-                <source type="image/webp" srcset="images/case3-after.webp">
-                <img src="images/case3-after.jpg" alt="After: new resin-bound driveway" loading="lazy" decoding="async">
-              </picture>
+              <img src="https://picsum.photos/seed/case3before/600/400" alt="Before: cracked, uneven driveway" loading="lazy" decoding="async">
+              <img src="https://picsum.photos/seed/case3after/600/400" alt="After: new resin-bound driveway" loading="lazy" decoding="async">
             </div>
             <div class="content">
               <div class="meta">Driveway • Perton • Completed: 5 days</div>
@@ -286,14 +246,8 @@
 
           <article class="case" role="listitem" aria-labelledby="case4-title">
             <div class="media">
-              <picture>
-                <source type="image/webp" srcset="images/case4-before.webp">
-                <img src="images/case4-before.jpg" alt="Before: damp bathroom and poor layout" loading="lazy" decoding="async">
-              </picture>
-              <picture>
-                <source type="image/webp" srcset="images/case4-after.webp">
-                <img src="images/case4-after.jpg" alt="After: modern bathroom with walk-in shower" loading="lazy" decoding="async">
-              </picture>
+              <img src="https://picsum.photos/seed/case4before/600/400" alt="Before: damp bathroom and poor layout" loading="lazy" decoding="async">
+              <img src="https://picsum.photos/seed/case4after/600/400" alt="After: modern bathroom with walk-in shower" loading="lazy" decoding="async">
             </div>
             <div class="content">
               <div class="meta">Bathroom renovation • Wolverhampton • Completed: 2 weeks</div>
@@ -305,10 +259,10 @@
 
         <h4 style="margin-top:18px">Project gallery</h4>
         <div class="gallery" aria-hidden="false">
-          <picture><source type="image/webp" srcset="images/project1.webp"><img src="images/project1.jpg" alt="Project image 1" loading="lazy" decoding="async"></picture>
-          <picture><source type="image/webp" srcset="images/project2.webp"><img src="images/project2.jpg" alt="Project image 2" loading="lazy" decoding="async"></picture>
-          <picture><source type="image/webp" srcset="images/project3.webp"><img src="images/project3.jpg" alt="Project image 3" loading="lazy" decoding="async"></picture>
-          <picture><source type="image/webp" srcset="images/project4.webp"><img src="images/project4.jpg" alt="Project image 4" loading="lazy" decoding="async"></picture>
+          <img src="https://picsum.photos/seed/project1/600/400" alt="Project image 1" loading="lazy" decoding="async">
+          <img src="https://picsum.photos/seed/project2/600/400" alt="Project image 2" loading="lazy" decoding="async">
+          <img src="https://picsum.photos/seed/project3/600/400" alt="Project image 3" loading="lazy" decoding="async">
+          <img src="https://picsum.photos/seed/project4/600/400" alt="Project image 4" loading="lazy" decoding="async">
         </div>
       </section>
 
@@ -334,4 +288,32 @@
             </div>
             <div style="margin-top:10px;display:flex;gap:10px;align-items:center">
               <button type="submit">Send request</button>
-              <div class="muted" style="font-size:13px">We reply within 24 hour
+              <div class="muted" style="font-size:13px">We reply within 24 hours</div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo" aria-label="Footer">
+      <div>© <span id="year"></span> <strong id="company-name-footer">Your Construction Co</strong>. Registered in England. VAT registration available on request.</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const COMPANY = {
+      name: "Your Construction Co",
+      phone: "+44 1234 567 890",
+      email: "Sin19256031@students.wolvcoll.ac.uk",
+      licence: "LIC-UK-0000",
+      logo: "logo.jpg"
+    };
+    document.getElementById('company-name').textContent = COMPANY.name;
+    document.getElementById('company-name-footer').textContent = COMPANY.name;
+    document.getElementById('licence-number').textContent = COMPANY.licence;
+    document.querySelectorAll('a[href^="tel:"]').forEach(a => a.href = "tel:" + COMPANY.phone.replace(/\s+/g,''));
+    document.querySelectorAll('a[href^="mailto:"]').forEach(a => a.href = "mailto:" + COMPANY.email);
+  </script>
+</body>
+</html>
