@@ -1,113 +1,152 @@
 <style>
-  /* Professional UI Upgrades */
-  .trust-bar {
-    background: #fff;
-    padding: 25px 0;
-    border-bottom: 1px solid #edf2f7;
-    text-align: center;
+  /* GLOBAL LAYOUT FIXES */
+  :root {
+    --primary-blue: #1a2b3c;
+    --accent-orange: #d35400;
   }
-  .trust-logos {
+
+  /* ACCREDITATION BAR */
+  .trust-bar-pro {
+    background: #ffffff;
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 2px solid #f1f5f9;
+  }
+  .trust-flex {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
+    gap: 40px;
     flex-wrap: wrap;
-    opacity: 0.7;
+    margin-top: 15px;
+  }
+  .trust-flex img {
+    height: 40px !important;
+    width: auto !important;
     filter: grayscale(1);
+    opacity: 0.8;
   }
-  .trust-logos img { height: 35px; width: auto; }
 
-  .services-container {
+  /* SERVICE CARDS GRID */
+  .services-grid-fix {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-    padding: 40px 0;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
-  .service-card {
+  .service-card-pro {
     background: #fff;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-    border: 1px solid #e2e8f0;
-    transition: 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: 1px solid #eef2f6;
+    display: flex;
+    flex-direction: column;
   }
-  .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-  .service-card img { width: 100%; height: 220px; object-fit: cover; }
-  .service-text { padding: 20px; }
-  .service-text h4 { margin: 0 0 10px 0; color: #1a202c; font-size: 1.25rem; }
+  .service-card-pro img {
+    width: 100% !important;
+    height: 240px !important;
+    object-fit: cover !important;
+    border-bottom: 4px solid var(--accent-orange);
+  }
+  .service-info-pro { padding: 25px; }
+  .service-info-pro h3 { margin: 0 0 10px 0; font-size: 1.5rem; color: var(--primary-blue); }
 
-  .ba-label {
+  /* BEFORE & AFTER SECTION */
+  .ba-section {
+    background: #f8fafc;
+    padding: 50px 20px;
+    border-radius: 20px;
+    margin: 40px auto;
+    max-width: 1100px;
+  }
+  .ba-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+  }
+  .ba-image-box {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .ba-image-box img {
+    width: 100% !important;
+    height: 300px !important;
+    object-fit: cover !important;
+  }
+  .label-tag {
     position: absolute;
-    bottom: 10px;
-    padding: 4px 12px;
-    font-size: 11px;
+    top: 15px;
+    padding: 5px 15px;
     font-weight: 800;
+    color: white;
+    font-size: 11px;
     letter-spacing: 1px;
     border-radius: 4px;
-    color: white;
+    text-transform: uppercase;
   }
 </style>
 
-<section class="trust-bar">
-  <p class="muted" style="font-size: 13px; font-weight: 700; margin-bottom: 15px; text-transform: uppercase;">Fully Vetted & Insured Professional Trades</p>
-  <div class="trust-logos">
-    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Checkatrade_logo.svg/1200px-Checkatrade_logo.svg.png" alt="Checkatrade Member">
-    <img src="https://www.fensa.org.uk/Portals/0/Images/FENSA_Logo_2020.png" alt="FENSA Registered">
-    <img src="https://www.trustatrader.com/images/logo-trust-a-trader.png" alt="TrustATrader">
-  </div>
-</section>
+<main id="main">
+  <section class="trust-bar-pro">
+    <strong style="color: #64748b; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Vetted by Leading Trade Bodies</strong>
+    <div class="trust-flex">
+      <img src="https://www.checkatrade.com/blog/wp-content/uploads/2021/05/Checkatrade-Logo-1.png" alt="Checkatrade">
+      <img src="https://www.fensa.org.uk/Portals/0/Images/FENSA_Logo_2020.png" alt="FENSA Registered">
+      <img src="https://www.trustatrader.com/images/logo-trust-a-trader.png" alt="TrustATrader Member">
+    </div>
+  </section>
 
-<section id="services" class="wrap">
-  <div style="text-align: center; margin-bottom: 40px;">
-    <h2>Our Core Services</h2>
-    <p class="muted">High-quality craftsmanship across Wolverhampton and Staffordshire.</p>
-  </div>
-
-  <div class="services-container">
-    <article class="service-card">
-      <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Kitchen Renovation">
-      <div class="service-text">
-        <h4>Home Renovations</h4>
-        <p class="muted">Revitalise your space with modern kitchen installations, luxury bathroom refits, and open-plan living conversions delivered with high-end finishes.</p>
+  <section class="services-grid-fix">
+    <article class="service-card-pro">
+      <img src="https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Kitchen Renovation">
+      <div class="service-info-pro">
+        <h3>Home Renovations</h3>
+        <p>Complete kitchen and bathroom transformations featuring modern layouts and high-end finishes for your home.</p>
       </div>
     </article>
 
-    <article class="service-card">
-      <img src="https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&w=800&q=80" alt="Building Extension">
-      <div class="service-text">
-        <h4>House Extensions</h4>
-        <p class="muted">Professional single and multi-storey extensions. We manage the entire process, including planning support and energy-efficient builds.</p>
+    <article class="service-card-pro">
+      <img src="https://images.pexels.com/photos/157811/pexels-photo-157811.jpeg?auto=compress&cs=tinysrgb&w=800" alt="House Extension">
+      <div class="service-info-pro">
+        <h3>House Extensions</h3>
+        <p>Expertly crafted single and double-storey extensions designed to add significant living space and property value.</p>
       </div>
     </article>
 
-    <article class="service-card">
-      <img src="https://images.unsplash.com/photo-1590483734724-3881744053ed?auto=format&fit=crop&w=800&q=80" alt="New Driveway">
-      <div class="service-text">
-        <h4>Driveways & Paving</h4>
-        <p class="muted">Durable resin-bound, block paving, and tarmac driveways. Expertly installed with SUDs-compliant drainage for a flood-free finish.</p>
+    <article class="service-card-pro">
+      <img src="https://images.pexels.com/photos/443378/pexels-photo-443378.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Driveway">
+      <div class="service-info-pro">
+        <h3>Driveways & Paving</h3>
+        <p>Durable and aesthetic resin, block paving, and tarmac solutions installed with full drainage compliance.</p>
       </div>
     </article>
-  </div>
-</section>
+  </section>
 
-<section id="projects" class="wrap section">
-  <h3>Recent Transformations</h3>
-  <div class="case-grid">
-    <article class="case">
-      <div class="media">
-        <div style="position:relative">
-          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=60" alt="Before Kitchen">
-          <span class="ba-label" style="background: #4a5568; left: 10px;">BEFORE</span>
-        </div>
-        <div style="position:relative">
-          <img src="https://images.unsplash.com/photo-1556912177-45000a7196e7?auto=format&fit=crop&w=600&q=60" alt="After Kitchen">
-          <span class="ba-label" style="background: #d35400; right: 10px;">AFTER</span>
-        </div>
+  <section class="ba-section">
+    <div style="text-align: center; margin-bottom: 30px;">
+      <h2 style="font-size: 2rem; color: var(--primary-blue);">Recent Project Transformation</h2>
+      <p style="color: #64748b;">See how we transformed this property in Wolverhampton.</p>
+    </div>
+
+    <div class="ba-grid">
+      <div class="ba-image-box">
+        <span class="label-tag" style="background: #475569; left: 15px;">Before</span>
+        <img src="https://images.pexels.com/photos/2131844/pexels-photo-2131844.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Dated Property">
       </div>
-      <div class="content">
-        <strong>Kitchen Remodel - Wolverhampton</strong>
-        <p class="muted">Full structural wall removal to create a seamless open-plan kitchen and dining area with premium island unit.</p>
+      <div class="ba-image-box">
+        <span class="label-tag" style="background: var(--accent-orange); right: 15px;">After</span>
+        <img src="https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Renovated Property">
       </div>
-    </article>
-  </div>
-</section>
+    </div>
+    
+    <div style="margin-top: 25px; text-align: center;">
+      <h3>Full Kitchen & Rear Extension</h3>
+      <p style="color: #64748b; max-width: 600px; margin: 10px auto;">A 12-week project involving structural wall removal, new foundations, and high-spec kitchen installation.</p>
+    </div>
+  </section>
+</main>
