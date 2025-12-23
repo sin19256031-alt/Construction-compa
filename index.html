@@ -1,46 +1,113 @@
-<section id="services" class="section" aria-labelledby="services-heading">
-  <h3 id="services-heading">Our Services</h3>
-  <div class="services" id="services-list" role="list">
-    
-    <article class="service" role="listitem" aria-labelledby="s-renovation">
-      <div class="icon" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=200&h=200&q=80" alt="Modern kitchen renovation" width="72" height="72" loading="lazy" decoding="async">
-      </div>
-      <div class="meta">
-        <strong id="s-renovation">Home Renovations</strong>
-        <div class="muted">Revitalise your space with modern kitchen installations, luxury bathroom refits, and open-plan living conversions delivered with high-end finishes.</div>
+<style>
+  /* Professional UI Upgrades */
+  .trust-bar {
+    background: #fff;
+    padding: 25px 0;
+    border-bottom: 1px solid #edf2f7;
+    text-align: center;
+  }
+  .trust-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    opacity: 0.7;
+    filter: grayscale(1);
+  }
+  .trust-logos img { height: 35px; width: auto; }
+
+  .services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    padding: 40px 0;
+  }
+  .service-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    border: 1px solid #e2e8f0;
+    transition: 0.3s;
+  }
+  .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+  .service-card img { width: 100%; height: 220px; object-fit: cover; }
+  .service-text { padding: 20px; }
+  .service-text h4 { margin: 0 0 10px 0; color: #1a202c; font-size: 1.25rem; }
+
+  .ba-label {
+    position: absolute;
+    bottom: 10px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    color: white;
+  }
+</style>
+
+<section class="trust-bar">
+  <p class="muted" style="font-size: 13px; font-weight: 700; margin-bottom: 15px; text-transform: uppercase;">Fully Vetted & Insured Professional Trades</p>
+  <div class="trust-logos">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Checkatrade_logo.svg/1200px-Checkatrade_logo.svg.png" alt="Checkatrade Member">
+    <img src="https://www.fensa.org.uk/Portals/0/Images/FENSA_Logo_2020.png" alt="FENSA Registered">
+    <img src="https://www.trustatrader.com/images/logo-trust-a-trader.png" alt="TrustATrader">
+  </div>
+</section>
+
+<section id="services" class="wrap">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2>Our Core Services</h2>
+    <p class="muted">High-quality craftsmanship across Wolverhampton and Staffordshire.</p>
+  </div>
+
+  <div class="services-container">
+    <article class="service-card">
+      <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Kitchen Renovation">
+      <div class="service-text">
+        <h4>Home Renovations</h4>
+        <p class="muted">Revitalise your space with modern kitchen installations, luxury bathroom refits, and open-plan living conversions delivered with high-end finishes.</p>
       </div>
     </article>
 
-    <article class="service" role="listitem" aria-labelledby="s-extensions">
-      <div class="icon" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&w=200&h=200&q=80" alt="House extension under construction" width="72" height="72" loading="lazy" decoding="async">
-      </div>
-      <div class="meta">
-        <strong id="s-extensions">Home Extensions</strong>
-        <div class="muted">Professional single and multi-storey extensions. We manage everything from planning support to build, ensuring energy-efficient results.</div>
+    <article class="service-card">
+      <img src="https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&w=800&q=80" alt="Building Extension">
+      <div class="service-text">
+        <h4>House Extensions</h4>
+        <p class="muted">Professional single and multi-storey extensions. We manage the entire process, including planning support and energy-efficient builds.</p>
       </div>
     </article>
 
-    <article class="service" role="listitem" aria-labelledby="s-driveways">
-      <div class="icon" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1590483734724-3881744053ed?auto=format&fit=crop&w=200&h=200&q=80" alt="Block paving driveway" width="72" height="72" loading="lazy" decoding="async">
-      </div>
-      <div class="meta">
-        <strong id="s-driveways">Driveways & Landscaping</strong>
-        <div class="muted">Durable resin-bound, block paving, and tarmac driveways. Expertly installed with SUDs-compliant drainage for a flood-free, beautiful finish.</div>
+    <article class="service-card">
+      <img src="https://images.unsplash.com/photo-1590483734724-3881744053ed?auto=format&fit=crop&w=800&q=80" alt="New Driveway">
+      <div class="service-text">
+        <h4>Driveways & Paving</h4>
+        <p class="muted">Durable resin-bound, block paving, and tarmac driveways. Expertly installed with SUDs-compliant drainage for a flood-free finish.</p>
       </div>
     </article>
+  </div>
+</section>
 
-    <article class="service" role="listitem" aria-labelledby="s-general">
-      <div class="icon" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=200&h=200&q=80" alt="Building tools and materials" width="72" height="72" loading="lazy" decoding="async">
+<section id="projects" class="wrap section">
+  <h3>Recent Transformations</h3>
+  <div class="case-grid">
+    <article class="case">
+      <div class="media">
+        <div style="position:relative">
+          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=60" alt="Before Kitchen">
+          <span class="ba-label" style="background: #4a5568; left: 10px;">BEFORE</span>
+        </div>
+        <div style="position:relative">
+          <img src="https://images.unsplash.com/photo-1556912177-45000a7196e7?auto=format&fit=crop&w=600&q=60" alt="After Kitchen">
+          <span class="ba-label" style="background: #d35400; right: 10px;">AFTER</span>
+        </div>
       </div>
-      <div class="meta">
-        <strong id="s-general">General Building & Maintenance</strong>
-        <div class="muted">Reliable plastering, roofing, and carpentry. We coordinate all plumbing and electrical trades to provide a single, trusted point of contact.</div>
+      <div class="content">
+        <strong>Kitchen Remodel - Wolverhampton</strong>
+        <p class="muted">Full structural wall removal to create a seamless open-plan kitchen and dining area with premium island unit.</p>
       </div>
     </article>
-
   </div>
 </section>
