@@ -1,319 +1,46 @@
-<!doctype html>
-<html lang="en-GB">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Your Construction Co — Renovation, Extensions, Driveways</title>
-  <meta name="description" content="Local UK builders specialising in renovations, extensions, driveways and general house work. Free quotes and insured tradespeople." />
-  <meta name="theme-color" content="#d35400" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --accent:#d35400; --accent-2:#ff7a2e; --bg:#f6f8fb; --card:#ffffff;
-      --muted:#6b7a8a; --text:#0b1a2b; --radius:12px; --maxw:1100px; --focus:3px solid #ffb38a;
-      font-family:Inter,system-ui,Arial,sans-serif; color-scheme: light;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:linear-gradient(180deg,#f6f8fb 0%, #ffffff 100%);color:var(--text);line-height:1.5;font-size:16px}
-    a{color:var(--accent)}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:18px}
-    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{left:12px;top:12px;width:auto;height:auto;padding:8px 12px;background:#000;color:#fff;border-radius:6px;z-index:9999}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:56px;width:56px;object-fit:contain;border-radius:8px}
-    .brand h1{font-size:18px;margin:0;color:var(--accent);font-weight:800}
-    nav a{margin-left:16px;color:inherit;text-decoration:none;font-weight:600}
-    .top-cta{display:flex;align-items:center;gap:12px}
-    .phone{background:var(--card);padding:8px 12px;border-radius:10px;box-shadow:0 6px 18px rgba(16,32,39,0.06);font-weight:700}
-    .badge{display:inline-flex;align-items:center;gap:10px;background:#0b74de;color:#fff;padding:8px 12px;border-radius:999px;font-weight:700;box-shadow:0 6px 18px rgba(11,23,40,0.06)}
-    .badge svg{width:20px;height:20px;flex-shrink:0}
-    .hero{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;padding:28px 0}
-    @media(min-width:900px){.hero{grid-template-columns:1fr 420px}}
-    .hero-card{background:var(--card);padding:22px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(16,32,39,0.06)}
-    .hero h2{font-size:clamp(24px,4.5vw,40px);margin:0 0 10px 0}
-    .hero p{margin:0 0 12px 0;color:var(--muted)}
-    .btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;display:inline-block;font-weight:700;box-shadow:0 8px 20px rgba(211,84,0,0.18)}
-    .section{margin-top:28px}
-    .section h3{margin:0 0 12px 0}
-    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-    .service{background:var(--card);padding:14px;border-radius:12px;display:flex;gap:12px;align-items:center;box-shadow:0 6px 18px rgba(16,32,39,0.04);transition:transform .35s ease,box-shadow .35s ease}
-    .service:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(16,32,39,0.08)}
-    .service .icon{width:72px;height:72px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f3f6fb}
-    .service .icon img{width:100%;height:100%;object-fit:cover}
-    .service .meta{flex:1}
-    .service .meta strong{display:block;margin-bottom:6px}
-    .case-grid{display:grid;grid-template-columns:1fr;gap:18px}
-    @media(min-width:900px){.case-grid{grid-template-columns:repeat(2,1fr)}}
-    .case{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(16,32,39,0.06);display:flex;flex-direction:column}
-    .case .media{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-    .case picture img{width:100%;height:180px;object-fit:cover;display:block}
-    .case .content{padding:14px}
-    .case .meta{color:var(--muted);font-size:14px;margin-bottom:8px}
-    .case strong{display:block;margin-bottom:8px}
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:12px}
-    .gallery img{width:100%;height:140px;object-fit:cover;border-radius:10px;transition:transform .35s ease}
-    .gallery img:hover{transform:scale(1.03)}
-    .contact-card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(16,32,39,0.04);max-width:720px}
-    .form-row{display:grid;grid-template-columns:1fr;gap:8px}
-    @media(min-width:700px){.form-row{grid-template-columns:1fr 1fr}}
-    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef6;font-size:15px}
-    input:focus,textarea:focus,button:focus{outline:none;box-shadow:var(--focus)}
-    button[type="submit"]{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;border:0;font-weight:700;cursor:pointer}
-    footer{padding:18px 0;color:var(--muted);font-size:14px}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    .fade-in{animation:fadeIn .7s ease forwards;opacity:0}
-    @keyframes fadeIn{to{opacity:1}}
-  </style>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"LocalBusiness",
-    "name":"Your Construction Co",
-    "image":["https://picsum.photos/seed/logo/600/400"],
-    "@id":"https://example.com/#business",
-    "url":"https://example.com",
-    "telephone":"+441234567890",
-    "priceRange":"££",
-    "address":{
-      "@type":"PostalAddress",
-      "streetAddress":"Unit 4, Example Road",
-      "addressLocality":"Perton",
-      "addressRegion":"Staffordshire",
-      "postalCode":"WV6 7XX",
-      "addressCountry":"GB"
-    },
-    "openingHours":"Mo-Fr 08:00-18:00",
-    "sameAs":["https://www.facebook.com/yourcompany","https://www.instagram.com/yourcompany"],
-    "areaServed":{"@type":"Place","name":"Perton; Wolverhampton; Staffordshire; West Midlands"},
-    "hasCredential":[{"@type":"EducationalOccupationalCredential","credentialCategory":"Licence","name":"Builder Licence: LIC-UK-0000"}]
-  }
-  </script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to main content</a>
-
-  <div class="wrap">
-    <header role="banner" aria-label="Site header">
-      <div class="brand">
-        <!-- placeholder logo (replace with your logo.jpg when ready) -->
-        <img src="https://picsum.photos/seed/logo/96/96" alt="Your Construction Co logo" id="logo">
-        <div>
-          <h1 id="company-name">Your Construction Co</h1>
-          <div class="muted" style="font-size:13px">Renovation • Extensions • Driveways • General Work</div>
-        </div>
+<section id="services" class="section" aria-labelledby="services-heading">
+  <h3 id="services-heading">Our Services</h3>
+  <div class="services" id="services-list" role="list">
+    
+    <article class="service" role="listitem" aria-labelledby="s-renovation">
+      <div class="icon" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=200&h=200&q=80" alt="Modern kitchen renovation" width="72" height="72" loading="lazy" decoding="async">
       </div>
-
-      <div class="top-cta">
-        <nav aria-label="Primary" role="navigation">
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-
-        <div class="badge" aria-hidden="false" role="status" title="Licensed and insured">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2l3 2 4 1v5c0 5-4 9-7 10-3-1-7-5-7-10V5l4-1 3-2z" fill="#fff"/>
-          </svg>
-          <span style="font-size:13px">Licensed & Insured</span>
-        </div>
-
-        <div class="phone" aria-label="Call us">
-          <a href="tel:+441234567890" style="color:inherit;text-decoration:none">+44 1234 567 890</a>
-        </div>
+      <div class="meta">
+        <strong id="s-renovation">Home Renovations</strong>
+        <div class="muted">Revitalise your space with modern kitchen installations, luxury bathroom refits, and open-plan living conversions delivered with high-end finishes.</div>
       </div>
-    </header>
+    </article>
 
-    <main id="main" role="main" aria-labelledby="hero-heading">
-      <section class="hero" aria-labelledby="hero-heading">
-        <div class="hero-card fade-in" style="animation-delay:.1s">
-          <h2 id="hero-heading">Quality home renovations and extensions you can trust</h2>
-          <p>Local, insured tradespeople delivering reliable work on time and on budget. Free site visit and written quote.</p>
+    <article class="service" role="listitem" aria-labelledby="s-extensions">
+      <div class="icon" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1503387762-592dee58c460?auto=format&fit=crop&w=200&h=200&q=80" alt="House extension under construction" width="72" height="72" loading="lazy" decoding="async">
+      </div>
+      <div class="meta">
+        <strong id="s-extensions">Home Extensions</strong>
+        <div class="muted">Professional single and multi-storey extensions. We manage everything from planning support to build, ensuring energy-efficient results.</div>
+      </div>
+    </article>
 
-          <form class="contact-card" action="https://formspree.io/f/your-form-id" method="POST" aria-label="Quick quote form" style="display:flex;gap:10px;flex-direction:column;max-width:520px">
-            <div style="display:flex;gap:8px">
-              <label class="sr-only" for="q-name">Name</label>
-              <input id="q-name" name="name" placeholder="Your name" required aria-required="true">
-              <label class="sr-only" for="q-contact">Contact</label>
-              <input id="q-contact" name="contact" placeholder="Phone or email" required aria-required="true">
-            </div>
-            <input name="postcode" placeholder="Postcode (optional)" aria-label="Postcode">
-            <div style="display:flex;gap:8px;align-items:center">
-              <button class="btn" type="submit">Request a free quote</button>
-              <div class="muted" style="font-size:13px">We reply within 24 hours</div>
-            </div>
-          </form>
-        </div>
+    <article class="service" role="listitem" aria-labelledby="s-driveways">
+      <div class="icon" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1590483734724-3881744053ed?auto=format&fit=crop&w=200&h=200&q=80" alt="Block paving driveway" width="72" height="72" loading="lazy" decoding="async">
+      </div>
+      <div class="meta">
+        <strong id="s-driveways">Driveways & Landscaping</strong>
+        <div class="muted">Durable resin-bound, block paving, and tarmac driveways. Expertly installed with SUDs-compliant drainage for a flood-free, beautiful finish.</div>
+      </div>
+    </article>
 
-        <aside class="hero-card fade-in" style="animation-delay:.2s" aria-labelledby="quick-facts">
-          <h3 id="quick-facts" style="margin-top:0">Quick facts</h3>
-          <ul style="margin:8px 0 0 18px;color:var(--muted)">
-            <li>Fully insured and licensed (Licence: <strong id="licence-number">LIC-UK-0000</strong>)</li>
-            <li>Transparent written quotes and fixed timelines</li>
-            <li>Local team covering Perton, Wolverhampton and surrounding areas</li>
-          </ul>
-        </aside>
-      </section>
+    <article class="service" role="listitem" aria-labelledby="s-general">
+      <div class="icon" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=200&h=200&q=80" alt="Building tools and materials" width="72" height="72" loading="lazy" decoding="async">
+      </div>
+      <div class="meta">
+        <strong id="s-general">General Building & Maintenance</strong>
+        <div class="muted">Reliable plastering, roofing, and carpentry. We coordinate all plumbing and electrical trades to provide a single, trusted point of contact.</div>
+      </div>
+    </article>
 
-      <section id="services" class="section" aria-labelledby="services-heading">
-        <h3 id="services-heading">Our Services</h3>
-        <div class="services" id="services-list" role="list">
-          <article class="service" role="listitem" aria-labelledby="s-renovation">
-            <div class="icon" aria-hidden="true">
-              <img src="https://picsum.photos/seed/renovation/160/160" alt="Kitchen renovation example" width="72" height="72" loading="lazy" decoding="async">
-            </div>
-            <div class="meta">
-              <strong id="s-renovation">Renovation</strong>
-              <div class="muted">Kitchen, bathroom and whole‑house renovations with attention to detail and project management.</div>
-            </div>
-          </article>
-
-          <article class="service" role="listitem" aria-labelledby="s-extensions">
-            <div class="icon" aria-hidden="true">
-              <img src="https://picsum.photos/seed/extensions/160/160" alt="House extension example" width="72" height="72" loading="lazy" decoding="async">
-            </div>
-            <div class="meta">
-              <strong id="s-extensions">Extensions</strong>
-              <div class="muted">Single and multi‑storey extensions, planning support and build management.</div>
-            </div>
-          </article>
-
-          <article class="service" role="listitem" aria-labelledby="s-driveways">
-            <div class="icon" aria-hidden="true">
-              <img src="https://picsum.photos/seed/driveway/160/160" alt="Driveway paving example" width="72" height="72" loading="lazy" decoding="async">
-            </div>
-            <div class="meta">
-              <strong id="s-driveways">Driveways</strong>
-              <div class="muted">Resin, block paving and tarmac driveways with drainage and sub‑base solutions.</div>
-            </div>
-          </article>
-
-          <article class="service" role="listitem" aria-labelledby="s-general">
-            <div class="icon" aria-hidden="true">
-              <img src="https://picsum.photos/seed/general/160/160" alt="General house work example" width="72" height="72" loading="lazy" decoding="async">
-            </div>
-            <div class="meta">
-              <strong id="s-general">General House Work</strong>
-              <div class="muted">Plastering, roofing, carpentry, and coordination of electrical and plumbing trades.</div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="projects" class="section" aria-labelledby="projects-heading">
-        <h3 id="projects-heading">Case studies — recent projects</h3>
-        <p class="muted">Real examples showing the brief, our approach and the result. Costs are indicative and exclude VAT unless stated.</p>
-
-        <div class="case-grid" role="list">
-          <article class="case" role="listitem" aria-labelledby="case1-title">
-            <div class="media">
-              <img src="https://picsum.photos/seed/case1before/600/400" alt="Before: small kitchen, dated layout" loading="lazy" decoding="async">
-              <img src="https://picsum.photos/seed/case1after/600/400" alt="After: open-plan kitchen with island" loading="lazy" decoding="async">
-            </div>
-            <div class="content">
-              <div class="meta">Renovation • Wolverhampton • Completed: 10 weeks</div>
-              <strong id="case1-title">Open-plan kitchen transformation</strong>
-              <p>Brief: Remove dividing wall, reconfigure layout and install new kitchen units with island. Approach: Structural opening with RSJ, new wiring and plumbing, bespoke cabinetry. Result: Bright open-plan kitchen, improved flow and increased property value. Indicative cost: £18,500 (materials & labour).</p>
-            </div>
-          </article>
-
-          <article class="case" role="listitem" aria-labelledby="case2-title">
-            <div class="media">
-              <img src="https://picsum.photos/seed/case2before/600/400" alt="Before: small rear garden and old patio" loading="lazy" decoding="async">
-              <img src="https://picsum.photos/seed/case2after/600/400" alt="After: single-storey rear extension with bi-folds" loading="lazy" decoding="async">
-            </div>
-            <div class="content">
-              <div class="meta">Extension • Staffordshire • Completed: 14 weeks</div>
-              <strong id="case2-title">Single-storey rear extension with bi-fold doors</strong>
-              <p>Brief: Create a family dining area with large glazed doors. Approach: Foundations, insulated slab, structural lintels, new roof and bi-fold installation. Result: Spacious dining area with natural light. Indicative cost: £36,000 (planning & build).</p>
-            </div>
-          </article>
-
-          <article class="case" role="listitem" aria-labelledby="case3-title">
-            <div class="media">
-              <img src="https://picsum.photos/seed/case3before/600/400" alt="Before: cracked, uneven driveway" loading="lazy" decoding="async">
-              <img src="https://picsum.photos/seed/case3after/600/400" alt="After: new resin-bound driveway" loading="lazy" decoding="async">
-            </div>
-            <div class="content">
-              <div class="meta">Driveway • Perton • Completed: 5 days</div>
-              <strong id="case3-title">Resin-bound driveway with drainage upgrade</strong>
-              <p>Brief: Replace failing driveway and improve drainage. Approach: Remove old surface, install new sub-base, resin-bound finish and channel drain. Result: Durable, low-maintenance driveway. Indicative cost: £4,200 (materials & labour).</p>
-            </div>
-          </article>
-
-          <article class="case" role="listitem" aria-labelledby="case4-title">
-            <div class="media">
-              <img src="https://picsum.photos/seed/case4before/600/400" alt="Before: damp bathroom and poor layout" loading="lazy" decoding="async">
-              <img src="https://picsum.photos/seed/case4after/600/400" alt="After: modern bathroom with walk-in shower" loading="lazy" decoding="async">
-            </div>
-            <div class="content">
-              <div class="meta">Bathroom renovation • Wolverhampton • Completed: 2 weeks</div>
-              <strong id="case4-title">Modern bathroom with walk-in shower</strong>
-              <p>Brief: Replace dated bathroom and resolve damp. Approach: Remove old fittings, treat damp, install new waterproofing, tiling and fixtures. Result: Contemporary, waterproof bathroom with improved ventilation. Indicative cost: £6,800.</p>
-            </div>
-          </article>
-        </div>
-
-        <h4 style="margin-top:18px">Project gallery</h4>
-        <div class="gallery" aria-hidden="false">
-          <img src="https://picsum.photos/seed/project1/600/400" alt="Project image 1" loading="lazy" decoding="async">
-          <img src="https://picsum.photos/seed/project2/600/400" alt="Project image 2" loading="lazy" decoding="async">
-          <img src="https://picsum.photos/seed/project3/600/400" alt="Project image 3" loading="lazy" decoding="async">
-          <img src="https://picsum.photos/seed/project4/600/400" alt="Project image 4" loading="lazy" decoding="async">
-        </div>
-      </section>
-
-      <section id="contact" class="section" aria-labelledby="contact-heading">
-        <h3 id="contact-heading">Contact and quote</h3>
-        <div class="contact-card" role="form" aria-label="Contact form">
-          <p class="muted">Email: <strong><a href="mailto:Sin19256031@students.wolvcoll.ac.uk">Sin19256031@students.wolvcoll.ac.uk</a></strong> • Phone: <strong><a href="tel:+441234567890">+44 1234 567 890</a></strong></p>
-
-          <form action="https://formspree.io/f/your-form-id" method="POST" style="margin-top:12px">
-            <div class="form-row">
-              <label class="sr-only" for="name">Name</label>
-              <input id="name" name="name" placeholder="Your name" required aria-required="true">
-              <label class="sr-only" for="contact">Phone or email</label>
-              <input id="contact" name="contact" placeholder="Phone or email" required aria-required="true">
-            </div>
-            <div style="margin-top:8px">
-              <label class="sr-only" for="address">Project address</label>
-              <input id="address" name="address" placeholder="Project address or postcode">
-            </div>
-            <div style="margin-top:8px">
-              <label class="sr-only" for="message">Project details</label>
-              <textarea id="message" name="message" rows="4" placeholder="Brief project details"></textarea>
-            </div>
-            <div style="margin-top:10px;display:flex;gap:10px;align-items:center">
-              <button type="submit">Send request</button>
-              <div class="muted" style="font-size:13px">We reply within 24 hours</div>
-            </div>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <footer role="contentinfo" aria-label="Footer">
-      <div>© <span id="year"></span> <strong id="company-name-footer">Your Construction Co</strong>. Registered in England. VAT registration available on request.</div>
-    </footer>
   </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const COMPANY = {
-      name: "Your Construction Co",
-      phone: "+44 1234 567 890",
-      email: "Sin19256031@students.wolvcoll.ac.uk",
-      licence: "LIC-UK-0000",
-      logo: "logo.jpg"
-    };
-    document.getElementById('company-name').textContent = COMPANY.name;
-    document.getElementById('company-name-footer').textContent = COMPANY.name;
-    document.getElementById('licence-number').textContent = COMPANY.licence;
-    document.querySelectorAll('a[href^="tel:"]').forEach(a => a.href = "tel:" + COMPANY.phone.replace(/\s+/g,''));
-    document.querySelectorAll('a[href^="mailto:"]').forEach(a => a.href = "mailto:" + COMPANY.email);
-  </script>
-</body>
-</html>
+</section>
